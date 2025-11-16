@@ -47,6 +47,16 @@
     ];
   };
 
+  #nixpkgs.overlays = [
+  #    (self: super: {
+  #      stdenv = super.stdenv.override {
+  #        cc = super.stdenv.cc.override {
+  #          extraFlags = [ "-march=native" ];
+  #        };
+  #      };
+  #    })
+  #];
+
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
