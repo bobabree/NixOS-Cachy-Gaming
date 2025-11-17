@@ -16,6 +16,13 @@
   # Let Home Manager manage itself
   programs.home-manager.enable = true;
 
+  # #===================================================================
+  # # DISPLAY & WINDOW MANAGERS
+  # #===================================================================
+
+  # # Niri - Scrollable-tiling Wayland compositor
+  # home.file.".config/niri/config.kdl".source = ./config.kdl;
+
   #===================================================================
   # TEXT EDITORS
   #===================================================================
@@ -149,16 +156,20 @@
       la = "ls -a";
 
       # NixOS shortcuts
-      rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#bree";
-      update = "nix flake update /etc/nixos && sudo nixos-rebuild switch --flake /etc/nixos#bree";
+      rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#bree && exec fish";
+      update = "nix flake update /etc/nixos && sudo nixos-rebuild switch --flake /etc/nixos#bree && exec fish";
 
       # Git shortcuts
       gs = "git status";
       ga = "git add *";
+      gc = "git commit -m";
       gp = "git push origin master";
 
       # Editor
       shx = "sudoedit";
+      shxf = "sudoedit /etc/nixos/flake.nix";
+      shxh = "sudoedit /etc/nixos/home.nix";
+      shxc = "sudoedit /etc/nixos/configuration.nix";
     };
 
     # Shell initialization

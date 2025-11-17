@@ -4,7 +4,7 @@
   #===================================================================
   # IMPORTS
   #===================================================================
-  
+
   imports = [
     ./hardware-configuration.nix
   ];
@@ -12,7 +12,7 @@
   #===================================================================
   # BOOT & KERNEL
   #===================================================================
-  
+
   # Bootloader configuration
   boot.loader = {
     systemd-boot.enable = true;
@@ -20,8 +20,8 @@
   };
 
   # CachyOS kernel optimized for x86-64-v3
-  boot.kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride { 
-    mArch = "GENERIC_V3"; 
+  boot.kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride {
+    mArch = "GENERIC_V3";
   };
 
   # SCX schedulers (CachyOS feature)
@@ -52,7 +52,7 @@
   #===================================================================
   # NETWORKING
   #===================================================================
-  
+
   networking = {
     hostName = "bree";
     networkmanager.enable = true;
@@ -61,7 +61,7 @@
   #===================================================================
   # LOCALIZATION
   #===================================================================
-  
+
   time.timeZone = "America/Los_Angeles";
 
   # Uncomment for internationalization support
@@ -70,13 +70,13 @@
   #===================================================================
   # HARDWARE
   #===================================================================
-  
+
   # Graphics drivers (Intel Arc)
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-      intel-media-driver  # VAAPI for Intel Arc
-      libva               # Video Acceleration API
+      intel-media-driver # VAAPI for Intel Arc
+      libva # Video Acceleration API
     ];
   };
 
@@ -86,7 +86,7 @@
   #===================================================================
   # AUDIO
   #===================================================================
-  
+
   # Use PipeWire (modern audio system)
   services.pipewire = {
     enable = true;
@@ -94,59 +94,60 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  
+
   # Disable PulseAudio (replaced by PipeWire)
   services.pulseaudio.enable = false;
-  
+
   # Real-time audio priority
   security.rtkit.enable = true;
 
   #===================================================================
   # PRINTING (DISABLED)
   #===================================================================
-  
+
   services.printing.enable = false;
 
   #===================================================================
   # DISPLAY & WINDOW MANAGERS
   #===================================================================
-  
+
   # Niri - Scrollable-tiling Wayland compositor
   programs.niri.enable = true;
+  environment.etc."niri/config.kdl".source = ./config.kdl;
 
   #===================================================================
   # BROWSERS
   #===================================================================
-  
+
   programs.firefox = {
     enable = true;
-    
+
     # Wayland + PipeWire for screensharing
     wrapperConfig = {
       pipewireSupport = true;
     };
-    
+
     # Power-efficient settings optimized for Intel Arc
     preferences = {
       # Hardware video decoding (VA-API)
       "media.ffmpeg.vaapi.enabled" = true;
       "media.hardware-video-decoding.enabled" = true;
       "media.hardware-video-decoding.force-enabled" = true;
-      
+
       # GPU-accelerated rendering (WebRender)
       "gfx.webrender.all" = true;
       "gfx.webrender.enabled" = true;
-      
+
       # Use system FFmpeg for better codec support
       "media.ffvpx.enabled" = false;
       "media.rdd-vpx.enabled" = false;
-      
+
       # Force hardware compositing
       "layers.acceleration.force-enabled" = true;
-      
+
       # Wayland integration
       "widget.use-xdg-desktop-portal.file-picker" = 1;
-      
+
       # Battery optimization - reduce process count
       "dom.ipc.processCount" = 4;
     };
@@ -155,20 +156,20 @@
   #===================================================================
   # SHELLS
   #===================================================================
-  
+
   # Enable fish system-wide (required for user shell)
   programs.fish.enable = true;
 
   #===================================================================
   # USERS
   #===================================================================
-  
+
   users.users.bree = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ 
-      "wheel"           # sudo access
-      "networkmanager"  # network configuration
+    extraGroups = [
+      "wheel" # sudo access
+      "networkmanager" # network configuration
     ];
     # User packages are managed in home.nix
   };
@@ -182,11 +183,11 @@
   #
   environment.systemPackages = with pkgs; [
     # System utilities
-    brightnessctl  # Backlight control for laptops
-    
+    brightnessctl # Backlight control for laptops
+
     # Development essentials
-    gcc            # C/C++ compiler (needed for some builds)
-    
+    gcc # C/C++ compiler (needed for some builds)
+
     # Emergency editor (always available if home-manager breaks)
     vim
   ];
@@ -194,7 +195,7 @@
   #===================================================================
   # FONTS
   #===================================================================
-  
+
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
@@ -202,21 +203,21 @@
   #===================================================================
   # ENVIRONMENT VARIABLES
   #===================================================================
-  
+
   environment.sessionVariables = {
     # Firefox optimizations
-    MOZ_ENABLE_WAYLAND = "1";  # Native Wayland support
-    MOZ_USE_XINPUT2 = "1";     # Better touchpad gestures
+    MOZ_ENABLE_WAYLAND = "1"; # Native Wayland support
+    MOZ_USE_XINPUT2 = "1"; # Better touchpad gestures
   };
 
   #===================================================================
   # NIX SETTINGS
   #===================================================================
-  
+
   nix.settings = {
     # Enable Flakes and new Nix commands
     experimental-features = [ "nix-command" "flakes" ];
-    
+
     # Optimize store automatically
     auto-optimise-store = true;
   };
