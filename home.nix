@@ -33,6 +33,7 @@
     settings = {
       theme = "catppuccin_mocha";
 
+      # https://helix-editor.vercel.app/configuration/editor
       editor = {
         line-number = "relative";
         mouse = false;
@@ -50,8 +51,16 @@
         };
 
         lsp = {
-          display-messages = true;
+          enable = true; # Enable/disable LSP integration entirely
+          display-messages = true; # Show LSP progress messages below statusline
+          auto-signature-help = true; # Auto popup signature help (parameter hints)
+          display-inlay-hints = true; # Display inlay hints
+          display-signature-help-docs = true; # Show docs under signature help popup
+          snippets = true; # Enable snippet completions
+          goto-reference-include-declaration = true; # Include declaration in goto references
         };
+
+        shell = [ "fish" "-i" "-c" ];
       };
 
       # Keybindings
@@ -167,9 +176,10 @@
 
       # Editor
       shx = "sudoedit";
+      shxc = "sudoedit /etc/nixos/configuration.nix";
       shxf = "sudoedit /etc/nixos/flake.nix";
       shxh = "sudoedit /etc/nixos/home.nix";
-      shxc = "sudoedit /etc/nixos/configuration.nix";
+      shxn = "sudoedit /etc/nixos/config.kdl";
     };
 
     # Shell initialization
