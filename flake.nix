@@ -10,18 +10,23 @@
     };
   };
 
-  outputs = { nixpkgs, chaotic, home-manager, ... }: {
+  outputs = {
+    nixpkgs,
+    chaotic,
+    home-manager,
+    ...
+  }: {
     nixosConfigurations = {
       bree = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
+          ./hosts/bree/configuration.nix
           chaotic.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.bree = import ./home.nix;
+            home-manager.users.bree = import ./hosts/bree/home.nix;
             home-manager.backupFileExtension = "backup";
           }
         ];

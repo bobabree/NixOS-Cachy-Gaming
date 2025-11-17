@@ -1,36 +1,34 @@
-{ config, lib, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   #===================================================================
   # IMPORTS
   #===================================================================
 
   imports = [
     ./hardware-configuration.nix
+    ../../system/boot.nix
+    ../../system/networking.nix
+    ../../system/audio.nix
+    ../../system/graphics.nix
   ];
 
   #===================================================================
-  # BOOT & KERNEL
+  # OVERLAYS
   #===================================================================
 
-  # Bootloader configuration
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
+  nixpkgs.overlays = [(import ../../system/overlays.nix)];
 
-  # CachyOS kernel optimized for x86-64-v3
-  boot.kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride {
-    mArch = "GENERIC_V3";
-  };
+  #===================================================================
+  # DISPLAY & WINDOW MANAGERS
+  #===================================================================
 
-  # SCX schedulers (CachyOS feature)
-  services.scx.enable = true;
+  # Niri - Scrollable-tiling Wayland compositor
+  programs.niri.enable = true;
+  environment.etc."niri/config.kdl".source = ../../assets/niri/config.kdl;
 
   #===================================================================
   # CPU OPTIMIZATION (EXPERIMENTAL)
   #===================================================================
-  # 
+  #
   # Uncomment to enable system-wide CPU optimization for x86-64-v3
   # WARNING: This will rebuild ALL packages from source (no binary cache)
   # Build time: Several hours on first rebuild
@@ -50,15 +48,6 @@
   # ];
 
   #===================================================================
-  # NETWORKING
-  #===================================================================
-
-  networking = {
-    hostName = "bree";
-    networkmanager.enable = true;
-  };
-
-  #===================================================================
   # LOCALIZATION
   #===================================================================
 
@@ -68,52 +57,10 @@
   # i18n.defaultLocale = "en_US.UTF-8";
 
   #===================================================================
-  # HARDWARE
-  #===================================================================
-
-  # Graphics drivers (Intel Arc)
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # VAAPI for Intel Arc
-      libva # Video Acceleration API
-    ];
-  };
-
-  # Input devices
-  services.libinput.enable = true;
-
-  #===================================================================
-  # AUDIO
-  #===================================================================
-
-  # Use PipeWire (modern audio system)
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  # Disable PulseAudio (replaced by PipeWire)
-  services.pulseaudio.enable = false;
-
-  # Real-time audio priority
-  security.rtkit.enable = true;
-
-  #===================================================================
   # PRINTING (DISABLED)
   #===================================================================
 
   services.printing.enable = false;
-
-  #===================================================================
-  # DISPLAY & WINDOW MANAGERS
-  #===================================================================
-
-  # Niri - Scrollable-tiling Wayland compositor
-  programs.niri.enable = true;
-  environment.etc."niri/config.kdl".source = ./config.kdl;
 
   #===================================================================
   # BROWSERS
@@ -177,7 +124,7 @@
   #===================================================================
   # SYSTEM PACKAGES
   #===================================================================
-  # 
+  #
   # Note: User-specific packages are managed in home.nix
   # Only system-wide utilities should be listed here
   #
@@ -216,7 +163,7 @@
 
   nix.settings = {
     # Enable Flakes and new Nix commands
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
 
     # Optimize store automatically
     auto-optimise-store = true;
@@ -225,7 +172,7 @@
   #===================================================================
   # SYSTEM STATE VERSION
   #===================================================================
-  # 
+  #
   # DO NOT CHANGE THIS VALUE
   # This defines the first version of NixOS installed on this machine.
   # See: https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
