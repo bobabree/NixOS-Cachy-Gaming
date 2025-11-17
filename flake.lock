@@ -58,6 +58,26 @@
         "type": "github"
       }
     },
+    "home-manager_2": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763313531,
+        "narHash": "sha256-yvdCYUL85zEDp2NzPUBmaNBXP6KnWEOhAk3j7PTfsKw=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "3670a78eee49deebe4825fc8ecc46b172d1a8391",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "jovian": {
       "inputs": {
         "nix-github-actions": "nix-github-actions",
@@ -138,6 +158,7 @@
     "root": {
       "inputs": {
         "chaotic": "chaotic",
+        "home-manager": "home-manager_2",
         "nixpkgs": "nixpkgs_2"
       }
     },
