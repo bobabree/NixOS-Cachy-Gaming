@@ -1,10 +1,10 @@
 # home/programs/niri/niri.nix
-{...}: {
-  #===================================================================
-  # DISPLAY & WINDOW MANAGERS
-  #===================================================================
+{inputs, ...}: {
+  # programs.niri.enable = true;
 
-  # Niri - Scrollable-tiling Wayland compositor
-  programs.niri.enable = true;
-  xdg.configFile."niri/config.kdl".source = ./config.kdl;
+  imports = [
+    inputs.niri.homeModules.niri
+    ./keybinds.nix
+    ./settings.nix
+  ];
 }

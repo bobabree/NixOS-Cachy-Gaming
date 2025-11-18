@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    niri.url = "github:sodiboo/niri-flake";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,14 +12,17 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     chaotic,
+    niri,
     home-manager,
     ...
-  }: {
+  } @ inputs: {
     nixosConfigurations = {
       bree = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {inherit self inputs;};
         modules = [
           # =====================================================
           # HOST-SPECIFIC CONFIGURATION
@@ -50,6 +54,9 @@
 
             # Backup existing files when home-manager would overwrite them
             home-manager.backupFileExtension = "backup";
+
+            # Pass to home manager too
+            home-manager.extraSpecialArgs = {inherit inputs;};
 
             # User configuration for 'bree'
             home-manager.users.bree = {

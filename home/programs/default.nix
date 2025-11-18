@@ -1,12 +1,18 @@
 # home/programs/default.nix
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   # Import all user program configurations
   imports = [
+    inputs.niri.homeModules.niri
     ./alacritty.nix
     ./helix.nix
     ./firefox.nix
     ./fish.nix
     ./git.nix
+    ./niri/niri.nix
   ];
 
   #===================================================================

@@ -13,6 +13,11 @@
     # User packages are managed in home.nix
   };
 
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
+
   #===================================================================
   # NIX SETTINGS
   #===================================================================
