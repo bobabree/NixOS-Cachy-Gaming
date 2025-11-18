@@ -1,4 +1,4 @@
-# system/networking.nix
+# hosts/bree/system/networking.nix
 {...}: {
   #===================================================================
   # NETWORKING

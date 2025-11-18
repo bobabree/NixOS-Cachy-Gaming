@@ -25,11 +25,10 @@
 
       # Editor
       shx = "sudoedit";
-
       shxc = "sudoedit /etc/nixos/hosts/bree/configuration.nix";
       shxf = "sudoedit /etc/nixos/flake.nix";
       shxh = "sudoedit /etc/nixos/hosts/bree/home.nix";
-      shxn = "sudoedit /etc/nixos/assets/niri/config.kdl";
+      shxn = "sudoedit /etc/nixos/home/programs/niri/config.kdl";
     };
 
     # Shell initialization

@@ -1,4 +1,4 @@
-# system/graphics.nix
+# hosts/bree/system/graphics.nix
 {pkgs, ...}: {
   #===================================================================
   # GRAPHICS

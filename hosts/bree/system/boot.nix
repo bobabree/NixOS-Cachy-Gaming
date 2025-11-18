@@ -1,4 +1,4 @@
-# system/boot.nix
+# hosts/bree/system/boot.nix
 {pkgs, ...}: {
   #===================================================================
   # BOOT & KERNEL
