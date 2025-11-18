@@ -6,7 +6,6 @@
 }: {
   # Import all user program configurations
   imports = [
-    inputs.niri.homeModules.niri
     ./alacritty.nix
     ./helix.nix
     ./firefox.nix

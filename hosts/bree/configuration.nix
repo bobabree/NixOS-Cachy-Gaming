@@ -1,11 +1,14 @@
 # hosts/bree/configuration.nix
-{...}: {
+{pkgs, ...}: {
   #===================================================================
   # USERS
   #===================================================================
 
+  programs.fish.enable = true;
   users.users.bree = {
     isNormalUser = true;
+    shell = pkgs.fish;
+
     extraGroups = [
       "wheel" # sudo access
       "networkmanager" # network configuration
