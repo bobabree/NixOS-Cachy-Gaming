@@ -1,4 +1,6 @@
-# home/programs/niri/layer-rules.nix
+# home/programs/niri/rules.nix
+# ────────────── Window Rules ──────────────
+# https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 {...}: {
   programs.niri.settings = {
     layer-rules = [

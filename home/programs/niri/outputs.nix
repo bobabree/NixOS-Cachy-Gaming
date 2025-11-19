@@ -1,8 +1,12 @@
 # home/programs/niri/outputs.nix
+# ────────────── Output Configuration ──────────────
+# You can run `niri msg outputs` to get the correct name for your displays.
+# You will have to remove "/-" and edit it before it takes effect.
+# https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 {...}: {
   programs.niri.settings = {
     outputs = {
-      "DP-1" = {
+      "eDP-1" = {
         mode = {
           width = 2880;
           height = 1800;

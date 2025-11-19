@@ -1,4 +1,6 @@
 # home/programs/niri/input.nix
+# ────────────── Input Configuration ──────────────
+# https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 {...}: {
   programs.niri.settings = {
     input = {

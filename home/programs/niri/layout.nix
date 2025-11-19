@@ -1,4 +1,6 @@
 # home/programs/niri/layout.nix
+# ────────────── Layout Settings ──────────────
+# https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 {...}: {
   programs.niri.settings = {
     layout = {

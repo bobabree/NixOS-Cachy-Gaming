@@ -18,8 +18,11 @@ in {
     # =====================================================
     # APPLICATIONS
     # =====================================================
-    "Mod+Return".action = spawn apps.terminal;
+    "Mod+t".action = spawn apps.terminal;
+    # "Mod+Space".action = spawn apps.fileManager;
+    # "Mod+a".action = spawn apps.appLauncher;
     "Mod+b".action = spawn apps.browser;
+    #"Mod+l".action = spawn apps.lockScreen;
     "Mod+q".action = close-window;
 
     # Quickshell launcher
@@ -200,6 +203,7 @@ in {
     # EMERGENCY & POWER
     # =====================================================
     "Mod+Escape" = {
+      # Use this when a fullscreen app blocks your keybinds.
       action = toggle-keyboard-shortcuts-inhibit;
       allow-inhibiting = false;
     };

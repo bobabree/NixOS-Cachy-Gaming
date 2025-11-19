@@ -28,7 +28,12 @@
       shxc = "sudoedit /etc/nixos/hosts/bree/configuration.nix";
       shxf = "sudoedit /etc/nixos/flake.nix";
       shxh = "sudoedit /etc/nixos/hosts/bree/home.nix";
-      shxn = "sudoedit /etc/nixos/home/programs/niri/config.kdl";
+
+      cdn = "cd /etc/nixos";
+      cdp = "cd /etc/nixos/home/programs";
+      cdhome = "cd /etc/nixos/home";
+      cdhosts = "cd /etc/nixos/hosts";
+      cdniri = "cd /etc/nixos/home/programs/niri";
     };
 
     # Shell initialization

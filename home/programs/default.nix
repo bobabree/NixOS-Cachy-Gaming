@@ -50,6 +50,7 @@
     GTK_USE_PORTAL = "1"; # Force Firefox to use XDG portal for screensharing
 
     # Wayland enviroment (from niri)
+    # https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#environment
     CLUTTER_BACKEND = "wayland";
     GDK_BACKEND = "wayland,x11";
     NIXOS_OZONE_WL = "1";
