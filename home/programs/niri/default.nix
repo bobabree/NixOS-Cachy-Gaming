@@ -7,10 +7,12 @@
 
   imports = [
     inputs.niri.homeModules.niri # Import Niri's home-manager module
-    ./settings.nix # Your custom configuration files for Niri
+    ./input.nix
     ./keybinds.nix
-    ./rules.nix
-    ./autostart.nix
-    ./scripts.nix
+    ./layer-rules.nix
+    ./layout.nix
+    ./outputs.nix
+    ./settings.nix
+    ./spawn-at-startup.nix
   ];
 }

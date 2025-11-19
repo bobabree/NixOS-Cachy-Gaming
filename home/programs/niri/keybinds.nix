@@ -1,4 +1,5 @@
 # home/programs/niri/keybinds.nix
+# https://github.com/YaLTeR/niri/wiki/Configuration:-Key-Bindings
 {
   config,
   pkgs,
@@ -149,6 +150,7 @@ in {
     # =====================================================
     # WORKSPACE SWITCHING (MOUSE)
     # =====================================================
+    # Use Touchpad instead of Wheel for laptops
     "Mod+WheelScrollDown" = {
       action = focus-workspace-down;
       cooldown-ms = 150;

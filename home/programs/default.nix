@@ -7,7 +7,7 @@
     ./firefox.nix
     ./fish.nix
     ./git.nix
-    ./niri/niri.nix
+    ./niri/default.nix
   ];
 
   #===================================================================
@@ -47,7 +47,18 @@
     # Firefox optimizations
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_USE_XINPUT2 = "1";
-    # Force Firefox to use XDG portal for screensharing
-    GTK_USE_PORTAL = "1";
+    GTK_USE_PORTAL = "1"; # Force Firefox to use XDG portal for screensharing
+
+    # Wayland enviroment (from niri)
+    CLUTTER_BACKEND = "wayland";
+    GDK_BACKEND = "wayland,x11";
+    NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "wayland";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+
+    XDG_SESSION_TYPE = "wayland";
+    XDG_CURRENT_DESKTOP = "niri";
+    DISPLAY = ":0";
   };
 }

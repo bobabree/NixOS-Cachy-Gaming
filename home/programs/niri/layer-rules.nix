@@ -1,4 +1,4 @@
-# home/programs/niri/rules.nix
+# home/programs/niri/layer-rules.nix
 {...}: {
   programs.niri.settings = {
     layer-rules = [
