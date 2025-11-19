@@ -22,7 +22,7 @@
       ga = "sudo git add *";
       gc = "sudo git commit -m";
       gd = "sudo git rm -rf";
-      gp = "sudo git push origin master";
+      gp = "git push origin master";
 
       # Editor
       shx = "sudoedit";
