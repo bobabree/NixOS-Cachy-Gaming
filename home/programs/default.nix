@@ -34,6 +34,9 @@
     cargo # Rust
     gcc # C/C++ compiler (needed for some builds)
     gh # GitHub command-line tool
+
+    # Cursor theme
+    kdePackages.breeze
   ];
 
   #===================================================================
@@ -61,5 +64,9 @@
     XDG_SESSION_TYPE = "wayland";
     XDG_CURRENT_DESKTOP = "niri";
     DISPLAY = ":0";
+
+    # Cursor theme
+    XCURSOR_THEME = "breeze_cursors";
+    XCURSOR_SIZE = "48";
   };
 }

@@ -46,6 +46,17 @@
         # open-on-workspace = "vesktop";
       }
 
+      # Floating windows
+      {
+        matches = [
+          {
+            app-id = "firefox$";
+            title = "^Picture-in-Picture$";
+          }
+        ];
+        open-floating = true;
+      }
+
       {
         matches = [{}];
         geometry-corner-radius = {

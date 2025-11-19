@@ -19,9 +19,10 @@
 
       # Git shortcuts
       gs = "git status";
-      ga = "git add *";
-      gc = "git commit -m";
-      gp = "git push origin master";
+      ga = "sudo git add *";
+      gc = "sudo git commit -m";
+      gd = "sudo git rm -rf";
+      gp = "sudo git push origin master";
 
       # Editor
       shx = "sudoedit";
@@ -29,10 +30,10 @@
       shxf = "sudoedit /etc/nixos/flake.nix";
       shxh = "sudoedit /etc/nixos/hosts/bree/home.nix";
 
+      cdb = "cd /etc/nixos/hosts/bree";
+      cdh = "cd /etc/nixos/home";
       cdn = "cd /etc/nixos";
       cdp = "cd /etc/nixos/home/programs";
-      cdhome = "cd /etc/nixos/home";
-      cdhosts = "cd /etc/nixos/hosts";
       cdniri = "cd /etc/nixos/home/programs/niri";
     };
 
