@@ -1,9 +1,5 @@
 # home/programs/default.nix
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   # Import all user program configurations
   imports = [
     ./alacritty.nix
@@ -19,6 +15,9 @@
   #===================================================================
 
   home.packages = with pkgs; [
+    # Apps
+    teams-for-linux # Microsoft Teams client
+
     # Fonts
     nerd-fonts.jetbrains-mono
 
@@ -26,11 +25,13 @@
     tree # Directory tree viewer
     btop # Better top/htop
     wl-clipboard-rs
+    ripgrep
 
     # System utilities
     brightnessctl # Backlight control for laptops
 
     # Development essentials
+    cargo # Rust
     gcc # C/C++ compiler (needed for some builds)
     gh # GitHub command-line tool
   ];
@@ -46,5 +47,7 @@
     # Firefox optimizations
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_USE_XINPUT2 = "1";
+    # Force Firefox to use XDG portal for screensharing
+    GTK_USE_PORTAL = "1";
   };
 }

@@ -9,7 +9,10 @@
         "vesktop" = {};
       };
 
+      # Disable program decorations
       prefer-no-csd = true;
+      # Screenshot saving
+      screenshot-path = "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png";
 
       hotkey-overlay = {
         skip-at-startup = true;
@@ -72,7 +75,7 @@
       };
 
       cursor = {
-        size = 20;
+        size = 30;
         theme = "Adwaita";
       };
 

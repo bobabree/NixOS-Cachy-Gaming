@@ -33,7 +33,7 @@
         matches = [
           {app-id = "firefox";}
         ];
-        open-on-workspace = "browser";
+        # open-on-workspace = "browser";
       }
 
       # Vesktop
@@ -41,7 +41,7 @@
         matches = [
           {app-id = "vesktop";}
         ];
-        open-on-workspace = "vesktop";
+        # open-on-workspace = "vesktop";
       }
 
       {

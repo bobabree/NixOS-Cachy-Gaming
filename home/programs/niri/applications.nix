@@ -1,12 +1,14 @@
-# home/programs/niri/application.nix
-{pkgs}: {
+# home/programs/niri/applications.nix
+{pkgs}: let
+  niri = "${pkgs.niri}/bin/niri";
+in {
   browser = "${pkgs.firefox}/bin/firefox";
   terminal = "${pkgs.alacritty}/bin/alacritty";
   # fileManager = "${pkgs.xfce.thunar}/bin/thunar";
   # appLauncher = "${pkgs.walker}/bin/walker";
 
-  # Screenshot tools using fish (requires grim, slurp, wl-clipboard-rs)
-  # screenshotArea = "${pkgs.fish}/bin/fish -c '${pkgs.grim}/bin/grim -g (${pkgs.slurp}/bin/slurp) - | ${pkgs.wl-clipboard-rs}/bin/wl-copy'";
-  # screenshotWindow = "${pkgs.fish}/bin/fish -c '${pkgs.grim}/bin/grim -g (${pkgs.slurp}/bin/slurp -w) - | ${pkgs.wl-clipboard-rs}/bin/wl-copy'";
-  #screenshotOutput = "${pkgs.fish}/bin/fish -c '${pkgs.grim}/bin/grim - | ${pkgs.wl-clipboard-rs}/bin/wl-copy'";
+  # Screenshot commands using niri's built-in IPC
+  screenshot = [niri "msg" "action" "screenshot"];
+  screenshot-window = [niri "msg" "action" "screenshot-window"];
+  screenshot-screen = [niri "msg" "action" "screenshot-screen"];
 }

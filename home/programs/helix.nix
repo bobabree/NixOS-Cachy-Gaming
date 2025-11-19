@@ -17,7 +17,7 @@
         # scrolloff = 5;
 
         # Enable mouse support
-        mouse = true;
+        mouse = false;
 
         # Enable middle-click paste
         # middle-click-paste = true;
@@ -567,10 +567,16 @@
       clang-tools # Includes clangd LSP and clang-format
 
       # Python toolchain
-      python3
       ruff # Fast linter and formatter with built-in LSP
       basedpyright # Type checker (fork of pyright)
-      python3Packages.debugpy # Debug adapter for Python
+      (python3.withPackages (ps:
+        with ps; [
+          pandas # Data analysis and manipulation (DataFrames)
+          pandas-stubs # Type hints for pandas (better LSP support)
+          numpy # Numerical computing and arrays
+          torch # PyTorch deep learning framework
+          debugpy # Debug adapter for Python debugging
+        ]))
 
       # Nix toolchain
       nixd # Modern Nix LSP with better features

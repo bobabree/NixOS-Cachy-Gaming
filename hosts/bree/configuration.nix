@@ -21,6 +21,25 @@
     "/share/xdg-desktop-portal"
   ];
 
+  # XDG Desktop Portal for screensharing on Wayland
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gnome # Required for niri screencasting!
+    ];
+    config.common.default = "gnome";
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
+        user = "greeter";
+      };
+    };
+  };
+
   #===================================================================
   # NIX SETTINGS
   #===================================================================
