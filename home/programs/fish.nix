@@ -14,12 +14,12 @@
       la = "ls -a";
 
       # NixOS shortcuts
-      rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#bree && exec fish";
+      rebuild = "sh -c 'cd /etc/nixos && sudo git add *' && sudo nixos-rebuild switch --flake /etc/nixos#bree && exec fish";
       update = "nix flake update /etc/nixos && sudo nixos-rebuild switch --flake /etc/nixos#bree && exec fish";
 
       # Git shortcuts
       gs = "git status";
-      ga = "sudo git add *";
+      ga = "sh -c 'cd /etc/nixos && sudo git add *'";
       gc = "sudo git commit -m";
       gd = "sudo git rm -rf";
       gp = "git push origin master";

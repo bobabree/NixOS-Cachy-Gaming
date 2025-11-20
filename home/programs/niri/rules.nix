@@ -31,11 +31,21 @@
     ];
 
     window-rules = [
+      # Alacritty
+      {
+        matches = [
+          {app-id = "Alacritty";}
+        ];
+        opacity = 0.95;
+      }
+
+      # Firefox
       {
         matches = [
           {app-id = "firefox";}
         ];
         # open-on-workspace = "browser";
+        opacity = 0.95;
       }
 
       # Vesktop
@@ -60,10 +70,10 @@
       {
         matches = [{}];
         geometry-corner-radius = {
-          top-left = 20.0;
-          top-right = 20.0;
-          bottom-left = 20.0;
-          bottom-right = 20.0;
+          top-left = 10.0;
+          top-right = 10.0;
+          bottom-left = 10.0;
+          bottom-right = 10.0;
         };
         clip-to-geometry = true;
       }

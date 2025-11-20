@@ -30,16 +30,40 @@
     config.common.default = "gnome";
   };
 
+  # Enable Steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+  # Allow unfree packages (required for Steam)
+  nixpkgs.config.allowUnfree = true;
+
+  # Greetd
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
+        command = "${pkgs.tuigreet}/bin/tuigreet --remember  --asterisks  --container-padding 2 --no-xsession-wrapper --cmd niri-session";
         user = "greeter";
       };
     };
   };
 
+  systemd = {
+    # To prevent getting stuck at shutdown
+    settings.Manager.DefaultTimeoutStopSec = "10s";
+
+    services.greetd.serviceConfig = {
+      Type = "idle";
+      StandardInput = "tty";
+      StandardOutput = "tty";
+      StandardError = "journal";
+      TTYReset = true;
+      TTYVHangup = true;
+      TTYVTDisallocate = true;
+    };
+  };
   #===================================================================
   # NIX SETTINGS
   #===================================================================

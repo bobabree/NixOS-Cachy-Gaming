@@ -25,8 +25,8 @@
       cursor = {
         hide-when-typing = false;
         # hide-after-inactive-ms = 1000;
-        size = 48;
-        theme = "breeze_cursors";
+        size = 36;
+        theme = "BreezeX-RosePineDawn-Linux";
       };
 
       hotkey-overlay = {
