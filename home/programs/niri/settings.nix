@@ -1,7 +1,6 @@
 # home/programs/niri/settings.nix
 {pkgs, ...}: {
   programs.niri = {
-    enable = true;
     package = pkgs.niri;
     settings = {
       workspaces = {

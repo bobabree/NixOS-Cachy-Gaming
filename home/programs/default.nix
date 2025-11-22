@@ -7,7 +7,8 @@
     ./firefox.nix # Browser config
     ./fish.nix # Shell config
     ./git.nix # Version control config
-    ./niri # Window manager (finds ./niri/default.nix automatically)
+    ./niri # Window manager for Wayland (finds ./niri/default.nix automatically)
+    ./noctalia # Desktop shell for Wayland
   ];
 
   #===================================================================
@@ -42,7 +43,7 @@
     gammastep
 
     # Niri
-    swaybg # static background
+    # swaybg # static background
     xwayland-satellite
   ];
 

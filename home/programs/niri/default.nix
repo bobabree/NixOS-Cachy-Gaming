@@ -1,5 +1,5 @@
 # home/programs/niri/default.nix
-# Niri configuration for CachyOS
+# Niri configuration for NixOS-Cachy-Gaming
 # For documentation and full reference,
 # see: https://github.com/YaLTeR/niri/wiki
 {inputs, ...}: {

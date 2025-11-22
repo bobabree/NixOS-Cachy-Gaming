@@ -23,7 +23,6 @@
   };
 
   users.groups.i2c = {}; # Group for monitor control (ddcutil)
-
   environment.pathsToLink = [
     "/share/applications"
     "/share/xdg-desktop-portal"
@@ -65,11 +64,18 @@
     };
 
     dbus.enable = true; # Inter-process communication
-    power-profiles-daemon.enable = true; # Power management
     printing.enable = true; # CUPS printing
     gvfs.enable = true; # Virtual filesystems (USB automount)
     tumbler.enable = true; # Thumbnail generation
+
+    # Power/Battery Feature Management
+    # power-profiles-daemon.enable = true;
+    tuned.enable = true;
+    upower.enable = true;
   };
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
 
   systemd = {
     # To prevent getting stuck at shutdown
