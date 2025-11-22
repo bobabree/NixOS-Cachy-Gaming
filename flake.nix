@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     niri.url = "github:sodiboo/niri-flake";
+    nur.url = "github:nix-community/NUR";
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,6 +22,7 @@
     chaotic,
     niri,
     noctalia,
+    nur,
     home-manager,
     ...
   } @ inputs: {
@@ -45,6 +47,10 @@
           # =====================================================
           # CachyOS kernel and optimizations
           chaotic.nixosModules.default
+          # NUR (Nix User Repository) - Community packages not in nixpkgs
+          {
+            nixpkgs.overlays = [nur.overlays.default];
+          }
 
           # =====================================================
           # HOME MANAGER (USER CONFIGURATION)
@@ -56,9 +62,6 @@
 
             # Install packages to /etc/profiles instead of ~/.nix-profile
             home-manager.useUserPackages = true;
-
-            # Backup existing files when home-manager would overwrite them
-            home-manager.backupFileExtension = "backup";
 
             # Pass to home manager too
             home-manager.extraSpecialArgs = {inherit inputs;};

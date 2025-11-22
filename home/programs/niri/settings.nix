@@ -3,6 +3,11 @@
   programs.niri = {
     package = pkgs.niri;
     settings = {
+      # REQUIRED: Allow Noctalia notification actions and window activation
+      debug = {
+        honor-xdg-activation-with-invalid-serial = {};
+      };
+
       workspaces = {
         "browser" = {};
         "vesktop" = {};
@@ -34,11 +39,10 @@
       };
 
       overview = {
-        zoom = 0.5; # Control how much the workspaces zoom out in the overview.
-        backdrop-color = "#291e10";
-
+        zoom = 0.75; # Control how much the workspaces zoom out in the overview.
+        # backdrop-color = "#26233a";
         workspace-shadow = {
-          enable = true; # off?
+          enable = false; # off?
           softness = 40;
           spread = 10;
           offset = {

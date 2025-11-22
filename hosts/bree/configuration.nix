@@ -1,5 +1,9 @@
 # hosts/bree/configuration.nix
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   #===================================================================
   # USERS
   #===================================================================
@@ -91,6 +95,44 @@
       TTYVTDisallocate = true;
     };
   };
+
+  # Enable dconf (required for GTK settings)
+  programs.dconf.enable = true;
+
+  # Calendar events via evolution-data-server
+  services.gnome.evolution-data-server.enable = true;
+  environment.systemPackages = with pkgs; [
+    (python3.withPackages (pyPkgs: with pyPkgs; [pygobject3]))
+    polkit_gnome
+  ];
+  environment.sessionVariables = {
+    GI_TYPELIB_PATH = lib.makeSearchPath "lib/girepository-1.0" (
+      with pkgs; [
+        evolution-data-server
+        libical
+        glib.out
+        libsoup_3
+        json-glib
+        gobject-introspection
+      ]
+    );
+  };
+
+  # Polkit authentication agent (lightweight, no DE needed)
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    description = "polkit-gnome-authentication-agent-1";
+    wantedBy = ["graphical-session.target"];
+    wants = ["graphical-session.target"];
+    after = ["graphical-session.target"];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
+
   #===================================================================
   # NIX SETTINGS
   #===================================================================

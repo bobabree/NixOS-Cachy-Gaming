@@ -14,7 +14,7 @@
       la = "ls -a";
 
       # NixOS shortcuts
-      rebuild = "sh -c 'cd /etc/nixos && sudo git add *' && sudo nixos-rebuild switch --flake /etc/nixos#bree && exec fish";
+      rebuild = "rm -rf ~/.local/state/home-manager; sh -c 'cd /etc/nixos && sudo git add *' && sudo nixos-rebuild switch --flake /etc/nixos#bree && exec fish";
       update = "nix flake update /etc/nixos && sudo nixos-rebuild switch --flake /etc/nixos#bree && exec fish";
 
       # Git shortcuts
@@ -33,8 +33,9 @@
       cdb = "cd /etc/nixos/hosts/bree";
       cde = "cd /etc/nixos";
       cdh = "cd /etc/nixos/home";
-      cdn = "cd /etc/nixos/home/programs/niri";
       cdp = "cd /etc/nixos/home/programs";
+      cdni = "cd /etc/nixos/home/programs/niri";
+      cdno = "cd /etc/nixos/home/programs/noctalia";
     };
     # Shell initialization
     shellInit = ''

@@ -3,27 +3,13 @@
 # https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 {...}: {
   programs.niri.settings = {
+    # Blurred Overview Wallpaper
+    # https://docs.noctalia.dev/getting-started/compositor-settings/#option-1-blurred-overview-wallpaper
     layer-rules = [
       {
         matches = [
           {
-            namespace = "^quickshell-wallpaper$";
-          }
-        ];
-        #place-within-backdrop = true;
-      }
-      {
-        matches = [
-          {
-            namespace = "^quickshell-overview$";
-          }
-        ];
-        place-within-backdrop = true;
-      }
-      {
-        matches = [
-          {
-            namespace = "^swww-daemon$";
+            namespace = "^noctalia-overview*";
           }
         ];
         place-within-backdrop = true;
@@ -70,10 +56,10 @@
       {
         matches = [{}];
         geometry-corner-radius = {
-          top-left = 10.0;
-          top-right = 10.0;
-          bottom-left = 10.0;
-          bottom-right = 10.0;
+          top-left = 20.0;
+          top-right = 20.0;
+          bottom-left = 20.0;
+          bottom-right = 20.0;
         };
         clip-to-geometry = true;
       }
