@@ -19,6 +19,19 @@
 
       gaps = 6;
 
+      shadow = {
+        enable = true;
+        softness = 30;
+        spread = 5;
+        offset = {
+          x = 0;
+          y = 5;
+        };
+        draw-behind-window = true;
+        color = "#57527970"; # text color with transparency
+        inactive-color = "#79759354"; # subtle with lower transparency
+      };
+
       struts = {
         left = 20;
         right = 20;

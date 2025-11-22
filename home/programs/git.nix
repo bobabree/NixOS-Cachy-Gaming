@@ -15,6 +15,7 @@
         defaultBranch = "master";
       };
       url."git@github.com:".insteadOf = "https://github.com/";
+      safe.directory = "/home/bree/dev/nixos";
     };
   };
 }

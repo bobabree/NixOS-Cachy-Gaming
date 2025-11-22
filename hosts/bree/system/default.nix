@@ -6,6 +6,8 @@
     ./networking.nix
     ./audio.nix
     ./graphics.nix
+
+    ./programs # Automatically finds programs/default.nix
   ];
 
   # Apply overlays for this host

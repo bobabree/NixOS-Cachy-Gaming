@@ -31,12 +31,11 @@
       shxh = "sudoedit /etc/nixos/hosts/bree/home.nix";
 
       cdb = "cd /etc/nixos/hosts/bree";
+      cde = "cd /etc/nixos";
       cdh = "cd /etc/nixos/home";
-      cdn = "cd /etc/nixos";
+      cdn = "cd /etc/nixos/home/programs/niri";
       cdp = "cd /etc/nixos/home/programs";
-      cdniri = "cd /etc/nixos/home/programs/niri";
     };
-
     # Shell initialization
     shellInit = ''
       # Disable greeting

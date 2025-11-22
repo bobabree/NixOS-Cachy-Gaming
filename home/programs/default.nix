@@ -2,12 +2,12 @@
 {pkgs, ...}: {
   # Import all user program configurations
   imports = [
-    ./alacritty.nix
-    ./helix.nix
-    ./firefox.nix
-    ./fish.nix
-    ./git.nix
-    ./niri/default.nix
+    ./alacritty.nix # Terminal emulator config
+    ./helix.nix # Text editor config
+    ./firefox.nix # Browser config
+    ./fish.nix # Shell config
+    ./git.nix # Version control config
+    ./niri # Window manager (finds ./niri/default.nix automatically)
   ];
 
   #===================================================================

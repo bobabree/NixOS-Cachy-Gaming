@@ -7,21 +7,8 @@
   programs.helix = {
     enable = true;
 
-    # Bree's Custom Theme
-    themes = {
-      rose_pine_dawn_transparent = {
-        inherits = "rose_pine_dawn";
-        "ui.background" = {}; # allow transparency
-        "ui.statusline" = {};
-        "ui.bufferline" = {};
-      };
-    };
-
     # Main configuration (config.toml)
     settings = {
-      # Theme name from available themes
-      theme = "rose_pine_dawn_transparent";
-
       editor = {
         # Number of lines of padding around edge when scrolling
         # scrolloff = 5;

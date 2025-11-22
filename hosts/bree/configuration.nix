@@ -10,11 +10,19 @@
     shell = pkgs.fish;
 
     extraGroups = [
-      "wheel" # sudo access
-      "networkmanager" # network configuration
+      "networkmanager" # Change network settings
+      "wheel" # Sudo access
+      "video" # Access video devices
+      "input" # Access input devices
+      "plugdev" # USB devices
+      "i2c" # Monitor control via DDC
+      "bluetooth" # Bluetooth management
     ];
+
     # User packages are managed in home.nix
   };
+
+  users.groups.i2c = {}; # Group for monitor control (ddcutil)
 
   environment.pathsToLink = [
     "/share/applications"
@@ -24,30 +32,43 @@
   # XDG Desktop Portal for screensharing on Wayland
   xdg.portal = {
     enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gnome # Required for niri screencasting!
-    ];
-    config.common.default = "gnome";
-  };
-
-  # Enable Steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
-  # Allow unfree packages (required for Steam)
-  nixpkgs.config.allowUnfree = true;
-
-  # Greetd
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --remember  --asterisks  --container-padding 2 --no-xsession-wrapper --cmd niri-session";
-        user = "greeter";
+    config = {
+      #common.default = "*";
+      common = {
+        default = ["gnome" "gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = "gnome";
+        "org.freedesktop.impl.portal.Screenshot" = "gnome";
+        "org.freedesktop.impl.portal.RemoteDesktop" = "gnome";
       };
     };
+    xdgOpenUsePortal = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal
+      # xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+
+      # Niri
+      xdg-desktop-portal-gnome
+    ];
+  };
+
+  # Greetd
+  services = {
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --remember  --asterisks  --container-padding 2 --no-xsession-wrapper --cmd niri-session";
+          user = "greeter";
+        };
+      };
+    };
+
+    dbus.enable = true; # Inter-process communication
+    power-profiles-daemon.enable = true; # Power management
+    printing.enable = true; # CUPS printing
+    gvfs.enable = true; # Virtual filesystems (USB automount)
+    tumbler.enable = true; # Thumbnail generation
   };
 
   systemd = {
@@ -74,6 +95,12 @@
 
     # Optimize store automatically
     auto-optimise-store = true;
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 5d"; # Clean old generations
   };
 
   #===================================================================

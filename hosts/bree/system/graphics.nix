@@ -16,4 +16,10 @@
 
   # Input devices
   services.libinput.enable = true;
+
+  # Loads GPU drivers that both X11 and Wayland use
+  services.xserver = {
+    enable = true;
+    videoDrivers = ["modesetting"]; # Intel Arc (recommended)
+  };
 }

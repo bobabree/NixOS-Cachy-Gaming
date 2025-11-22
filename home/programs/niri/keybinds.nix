@@ -26,7 +26,7 @@ in {
     "Mod+q".action = close-window;
 
     # Quickshell launcher
-    "Mod+Control+Return".action = spawn ["qs" "ipc" "call" "globalIPC" "toggleLauncher"];
+    "Mod+Control+Return".action = spawn ["noctalia-shell" "ipc" "call" "globalIPC" "toggleLauncher"];
 
     # =====================================================
     # AUDIO CONTROLS
