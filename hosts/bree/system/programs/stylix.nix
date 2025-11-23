@@ -17,8 +17,8 @@
     targets = {
       console.enable = true; # TTY/virtual terminal colors
       grub.enable = true; # Bootloader theme (systemd-boot doesn't use this)
-      plymouth.enable = true; # Boot splash screen
       nixos-icons.enable = true; # System icon theme
+      plymouth.enable = true; # Boot splash screen
     };
   };
 }

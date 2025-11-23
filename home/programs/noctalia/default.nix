@@ -2,12 +2,7 @@
 # Noctalia configuration for NixOS-Cachy-Gaming
 # For documentation and full reference,
 # see: https://docs.noctalia.dev/
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
   programs.noctalia-shell.enable = true;
 
   imports = [

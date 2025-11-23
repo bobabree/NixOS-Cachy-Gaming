@@ -6,21 +6,21 @@
     # Auto-theming
     autoEnable = true;
 
-    # Static scheme for now
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-
     # Home Manager targets
     targets = {
       # Noctalia handles these
-      alacritty.enable = true;
-      firefox.enable = true;
-      gtk.enable = true;
-      qt.enable = true;
+      firefox.enable = false;
 
-      # Let Stylix handle the ones Noctalia can't
-      helix.enable = true;
-      fish.enable = true;
+      # Let Stylix handle the ones Noctalia cannot handle properly.
+      alacritty.enable = true;
+      bat.enable = true;
       btop.enable = true;
+      fish.enable = true;
+      fzf.enable = true;
+      gtk.enable = true;
+      helix.enable = true;
+      qt.enable = true;
+      tmux.enable = true;
     };
 
     # Cursor

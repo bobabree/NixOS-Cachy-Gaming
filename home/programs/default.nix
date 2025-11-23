@@ -30,10 +30,14 @@
     inter # Noctalia headers font
 
     # CLI utilities
-    tree # Directory tree viewer
+    bat # Syntax-highlighted cat
     btop # Better top/htop
-    wl-clipboard-rs
-    ripgrep
+    fzf # Fuzzy finder for interactive searches
+    ripgrep # Better grep
+    tmux # Terminal multiplexer (multiple terminals in one window)
+    tree # Directory tree viewer
+    wl-clipboard-rs # wl-copy
+    zathura # Minimal PDF viewer with vim keybinds
 
     # System utilities
     brightnessctl # Backlight control for laptops

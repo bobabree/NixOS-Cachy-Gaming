@@ -10,20 +10,16 @@
     settings = {
       # Enable theme templates for applications
       templates = {
-        gtk = true; # GTK apps (GNOME apps, most Linux apps)
-        qt = true; # Qt apps (KDE apps, cross-platform apps)
-        alacritty = true; # Alacritty terminal
         firefox = true; # Firefox (requires Pywalfox extension)
         pywalfox = true;
-        # helix = true;
         discord = true; # Discord/Vesktop
       };
 
       # Color scheme
       colorSchemes = {
         useWallpaperColors = false; # Set true if you want colors from wallpaper
-        predefinedScheme = "Noctalia (default)";
-        darkMode = true;
+        predefinedScheme = "Rosepine";
+        # darkMode = true;
         generateTemplatesForPredefined = true; # Important for themes
       };
 
