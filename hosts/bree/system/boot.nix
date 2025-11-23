@@ -27,7 +27,7 @@
     };
 
     kernelParams = [
-      "video=eDP-1:2880x1800@120" # Force monitor resolution/refresh
+      # "video=eDP-1:2880x1800@120" # Force monitor resolution/refresh
       "quiet" # Reduce boot messages for cleaner Plymouth display
       "splash" # Enable Plymouth boot splash
     ];

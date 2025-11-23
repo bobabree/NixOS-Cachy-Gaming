@@ -7,6 +7,7 @@
     spawn-at-startup = [
       {command = ["alacritty"];}
       {command = ["firefox"];}
+      {command = ["vesktop"];}
 
       # Permanent warm tone
       # {command = ["gammastep" "-O" "4200"];}

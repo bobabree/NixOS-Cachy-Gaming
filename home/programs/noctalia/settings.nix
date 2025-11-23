@@ -10,9 +10,14 @@
     settings = {
       # Enable theme templates for applications
       templates = {
+        alacritty = false;
+        discord = true; # Discord/Vesktop
+        vesktop = true;
+        vencord = true;
         firefox = true; # Firefox (requires Pywalfox extension)
         pywalfox = true;
-        discord = true; # Discord/Vesktop
+        gtk = false;
+        qt = false;
       };
 
       # Color scheme

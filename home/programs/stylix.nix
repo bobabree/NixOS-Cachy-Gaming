@@ -9,17 +9,17 @@
     # Home Manager targets
     targets = {
       # Noctalia handles these
+      alacritty.enable = true;
       firefox.enable = false;
+      gtk.enable = true;
+      qt.enable = true;
 
       # Let Stylix handle the ones Noctalia cannot handle properly.
-      alacritty.enable = true;
       bat.enable = true;
       btop.enable = true;
       fish.enable = true;
       fzf.enable = true;
-      gtk.enable = true;
       helix.enable = true;
-      qt.enable = true;
       tmux.enable = true;
     };
 

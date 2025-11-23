@@ -17,21 +17,22 @@
     ];
 
     window-rules = [
-      # Alacritty
+      # Opacity
       {
         matches = [
           {app-id = "Alacritty";}
+          {app-id = "firefox";}
+          {app-id = "vesktop";}
         ];
         opacity = 0.95;
       }
 
-      # Firefox
+      # Browser
       {
         matches = [
           {app-id = "firefox";}
         ];
         # open-on-workspace = "browser";
-        opacity = 0.95;
       }
 
       # Vesktop

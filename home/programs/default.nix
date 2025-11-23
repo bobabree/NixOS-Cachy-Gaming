@@ -12,6 +12,7 @@
     ./fish.nix # Shell config
     ./git.nix # Version control config
     ./stylix.nix # System/CLI/Program theming for ones Noctalia cannot handle
+    ./vesktop.nix # Discord
     ./niri # Window manager for Wayland (finds ./niri/default.nix automatically)
     ./noctalia # Desktop shell for Wayland
   ];
@@ -23,6 +24,7 @@
   home.packages = with pkgs; [
     # Apps
     teams-for-linux # Microsoft Teams client
+    vesktop # Discord with better Linux support + Vencord
 
     # Fonts
     nerd-fonts.jetbrains-mono
@@ -37,7 +39,7 @@
     tmux # Terminal multiplexer (multiple terminals in one window)
     tree # Directory tree viewer
     wl-clipboard-rs # wl-copy
-    zathura # Minimal PDF viewer with vim keybinds
+    # zathura # Minimal PDF viewer with vim keybinds
 
     # System utilities
     brightnessctl # Backlight control for laptops
