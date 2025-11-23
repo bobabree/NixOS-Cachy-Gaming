@@ -18,6 +18,7 @@
         device = "nodev"; # EFI mode (no legacy BIOS)
         efiSupport = true;
         useOSProber = true; # Detect other operating systems
+        gfxmodeEfi = "1440x900";
       };
     };
 

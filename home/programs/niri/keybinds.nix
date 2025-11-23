@@ -6,13 +6,6 @@
   ...
 }: let
   apps = import ./applications.nix {inherit pkgs;};
-  noctalia = cmd:
-    [
-      "noctalia-shell"
-      "ipc"
-      "call"
-    ]
-    ++ (pkgs.lib.splitString " " cmd);
 in {
   programs.niri.settings.binds = with config.lib.niri.actions; let
     sh = spawn "sh" ["-c"];
@@ -27,18 +20,11 @@ in {
     # =====================================================
     "Mod+t".action = spawn apps.terminal;
     # "Mod+Space".action = spawn apps.fileManager;
-    # "Mod+a".action = spawn apps.appLauncher;
+    "Mod+a".action = spawn apps.appLauncher;
     "Mod+b".action = spawn apps.browser;
-    #"Mod+l".action = spawn apps.lockScreen;
+    "Mod+l".action = spawn apps.lockScreen;
+    "Mod+Shift+l".action = spawn apps.sessionScreen;
     "Mod+q".action = close-window;
-
-    # Noctalia launcher
-    "Mod+Control+Return".action = spawn ["noctalia-shell" "ipc" "call" "launcher" "toggle"];
-    "Mod+l".action = spawn ["noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"];
-    # "Mod+l".action.spawn = noctalia "lockScreen toggle";
-    # "XF86AudioLowerVolume".action.spawn = noctalia "volume decrease";
-    # "XF86AudioRaiseVolume".action.spawn = noctalia "volume increase";
-    # "XF86AudioMute".action.spawn = noctalia "volume muteOutput";
 
     # =====================================================
     # AUDIO CONTROLS

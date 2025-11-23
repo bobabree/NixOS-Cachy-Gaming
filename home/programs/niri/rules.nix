@@ -27,20 +27,12 @@
         opacity = 0.95;
       }
 
-      # Browser
-      {
-        matches = [
-          {app-id = "firefox";}
-        ];
-        # open-on-workspace = "browser";
-      }
-
       # Vesktop
       {
         matches = [
           {app-id = "vesktop";}
         ];
-        # open-on-workspace = "vesktop";
+        open-on-workspace = "vesktop";
       }
 
       # Floating windows
@@ -49,6 +41,10 @@
           {
             app-id = "firefox$";
             title = "^Picture-in-Picture$";
+          }
+          {
+            app-id = "vesktop$";
+            title = "^[^|]+$"; # Matches titles without "|" character
           }
         ];
         open-floating = true;

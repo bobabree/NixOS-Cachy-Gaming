@@ -54,9 +54,8 @@
       wallpaper = {
         enabled = true; # Enable wallpaper feature
         overviewEnabled = true; # Enable blurred overview wallpaper
-        directory = "/home/bree/Pictures/Wallpapers"; # Set  wallpaper directory
-        # Or set a default wallpaper:
-        # defaultWallpaper = "/etc/nixos/hosts/bree/assets/rose-1.png";
+        directory = "/etc/nixos/hosts/bree/assets"; # Set  wallpaper directory
+        defaultWallpaper = "/etc/nixos/hosts/bree/assets/1.jpg";
         setWallpaperOnAllMonitors = true;
         fillMode = "crop";
         transitionDuration = 1500;
