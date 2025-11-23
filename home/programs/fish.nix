@@ -22,6 +22,7 @@
       cc = "claude chat"; # Start new chat
       ccn = "claude chat --new"; # Force new chat session
       cf = "claude file"; # Work on specific file
+      cr = "claude --resume"; # Start new chat
 
       # Git shortcuts
       gs = "git status";

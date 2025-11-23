@@ -20,14 +20,16 @@ in {
     # =====================================================
     "Mod+t".action = spawn apps.terminal;
     "Mod+Shift+t".action = spawn apps.aiTerminal;
+    "Mod+Space".action = spawn apps.fileManager;
+    "Mod+Shift+Space".action = spawn apps.fileManagerTerminal;
 
-    # "Mod+Space".action = spawn apps.fileManager;
     "Mod+a".action = spawn apps.appLauncher;
     "Mod+b".action = spawn apps.browser;
     "Mod+l".action = spawn apps.lockScreen;
     "Mod+Shift+l".action = spawn apps.sessionScreen;
     "Mod+m".action = spawn apps.systemMonitor;
     "Mod+q".action = close-window;
+    "Mod+n".action = spawn apps.nightShift;
     # =====================================================
     # AUDIO CONTROLS
     # =====================================================

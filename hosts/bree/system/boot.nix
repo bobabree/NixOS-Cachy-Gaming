@@ -9,6 +9,8 @@
     loader = {
       # GRUB bootloader with theming support
       systemd-boot.enable = false; # Disabled in favor of GRUB
+      timeout = 0; # Instant boot
+
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
@@ -31,6 +33,9 @@
       # "video=eDP-1:2880x1800@120" # Force monitor resolution/refresh
       "quiet" # Reduce boot messages for cleaner Plymouth display
       "splash" # Enable Plymouth boot splash
+      "loglevel=3" # Hide most messages
+      "rd.systemd.show_status=false" # Hide systemd status
+      "rd.udev.log_level=3" # Quiet udev
     ];
 
     kernelModules = ["v4l2loopback" "i2c-dev"]; # Webcam + monitor control

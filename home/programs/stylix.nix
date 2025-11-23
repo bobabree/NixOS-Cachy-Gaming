@@ -21,6 +21,7 @@
       fzf.enable = true;
       helix.enable = true;
       tmux.enable = true;
+      yazi.enable = true;
     };
 
     # Cursor

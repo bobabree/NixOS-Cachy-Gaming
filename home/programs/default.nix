@@ -15,6 +15,7 @@
     ./stylix.nix # System/CLI/Program theming for ones Noctalia cannot handle
     ./tmux.nix # Terminal multiplexer
     ./vesktop.nix # Discord
+    ./yazi.nix # Terminal file manager
     ./niri # Window manager for Wayland (finds ./niri/default.nix automatically)
     ./noctalia # Desktop shell for Wayland
   ];
@@ -25,6 +26,7 @@
 
   home.packages = with pkgs; [
     # Apps
+    nautilus # Nautilus GUI file manager
     teams-for-linux # Microsoft Teams client
     vesktop # Discord with better Linux support + Vencord
 
@@ -43,7 +45,7 @@
     tree # Directory tree viewer
     wev # Show keypresses
     wl-clipboard-rs # wl-copy
-    # zathura # Minimal PDF viewer with vim keybinds
+    yazi # Terminal file manager
 
     # System utilities
     brightnessctl # Backlight control for laptops

@@ -5,20 +5,7 @@
   programs.niri.settings = {
     # Spawn processes/shell commands at niri startup
     spawn-at-startup = [
-      {
-        command = [
-          "alacritty"
-          "-e"
-          "tmux"
-          "new-session"
-          "-A"
-          "-s"
-          "boba"
-          "\\;"
-          "split-window"
-          "-v"
-        ];
-      }
+      {command = ["alacritty"];}
       {command = ["firefox"];}
       {command = ["vesktop"];}
 

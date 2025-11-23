@@ -208,7 +208,7 @@
         enableClipPreview = true; # Preview clipboard items
 
         # Applications
-        pinnedExecs = ["firefox" "alacritty" "vesktop"]; # Pinned app executables ["firefox" "alacritty"]
+        pinnedExecs = ["firefox" "alacritty" "nautilus" "vesktop"]; # Pinned app executables ["firefox" "alacritty"]
         sortByMostUsed = true; # Sort by usage frequency
         useApp2Unit = false; # Use systemd app2unit for launching
 
