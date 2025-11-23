@@ -46,4 +46,7 @@
       ];
     };
   };
+
+  # Tell Stylix which profile to theme
+  stylix.targets.firefox.profileNames = ["default"];
 }

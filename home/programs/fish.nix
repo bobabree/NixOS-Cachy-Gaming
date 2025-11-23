@@ -33,7 +33,8 @@
       cdb = "cd /etc/nixos/hosts/bree";
       cde = "cd /etc/nixos";
       cdh = "cd /etc/nixos/home";
-      cdp = "cd /etc/nixos/home/programs";
+      cdph = "cd /etc/nixos/home/programs";
+      cdps = "cd /etc/nixos/hosts/bree/system/programs";
       cdni = "cd /etc/nixos/home/programs/niri";
       cdno = "cd /etc/nixos/home/programs/noctalia";
     };

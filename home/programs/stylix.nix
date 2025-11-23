@@ -1,63 +1,32 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  imports = [
-    inputs.stylix.homeModules.stylix
-  ];
-
+# home/programs/stylix.nix
+{pkgs, ...}: {
   stylix = {
     enable = true;
 
-    # Disable auto-theming
-    autoEnable = false;
+    # Auto-theming
+    autoEnable = true;
 
     # Static scheme for now
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
 
     # Home Manager targets
     targets = {
       # Noctalia handles these
-      alacritty.enable = false;
-      firefox.enable = false;
-      gtk.enable = false;
-      qt.enable = false;
+      alacritty.enable = true;
+      firefox.enable = true;
+      gtk.enable = true;
+      qt.enable = true;
 
       # Let Stylix handle the ones Noctalia can't
       helix.enable = true;
-      # fish.enable = true;
-      # btop.enable = true;
-    };
-
-    # Fonts - Match Noctalia
-    fonts = {
-      serif = {
-        package = pkgs.roboto;
-        name = "Roboto";
-      };
-      sansSerif = {
-        package = pkgs.inter;
-        name = "Inter";
-      };
-      monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font";
-      };
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
-      sizes = {
-        terminal = 11;
-        applications = 11;
-      };
+      fish.enable = true;
+      btop.enable = true;
     };
 
     # Cursor
     cursor = {
       package = pkgs.rose-pine-cursor;
-      name = "BreezeX-RosePineDawn-Linux";
+      name = "BreezeX-RosePine-Linux";
       size = 36;
     };
 

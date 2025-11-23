@@ -53,7 +53,7 @@
     pywalfox-native # Enable firefox theming
   ];
 
-  # Create symlink for pywalfox
+  # Create symlink for pywalfox/stylix
   home.file.".cache/wal/colors.json" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/noctalia/colors.json";
     force = true;
