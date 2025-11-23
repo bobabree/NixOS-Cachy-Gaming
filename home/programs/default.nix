@@ -7,6 +7,7 @@
   # Import all user program configurations
   imports = [
     ./alacritty.nix # Terminal emulator config
+    ./btop.nix # System monitor
     ./helix.nix # Text editor config
     ./firefox.nix # Browser config
     ./fish.nix # Shell config
@@ -34,10 +35,12 @@
     # CLI utilities
     bat # Syntax-highlighted cat
     btop # Better top/htop
+    claude-code # Claude CLI
     fzf # Fuzzy finder for interactive searches
     ripgrep # Better grep
     tmux # Terminal multiplexer (multiple terminals in one window)
     tree # Directory tree viewer
+    wev # Show keypresses
     wl-clipboard-rs # wl-copy
     # zathura # Minimal PDF viewer with vim keybinds
 

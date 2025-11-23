@@ -17,6 +17,12 @@
       rebuild = "rm -rf ~/.local/state/home-manager; sh -c 'cd /etc/nixos && sudo git add *' && sudo nixos-rebuild switch --flake /etc/nixos#bree && exec fish";
       update = "nix flake update /etc/nixos && sudo nixos-rebuild switch --flake /etc/nixos#bree && exec fish";
 
+      # Claude shortcuts
+      c = "claude";
+      cc = "claude chat"; # Start new chat
+      ccn = "claude chat --new"; # Force new chat session
+      cf = "claude file"; # Work on specific file
+
       # Git shortcuts
       gs = "git status";
       ga = "sh -c 'cd /etc/nixos && sudo git add *'";
@@ -31,6 +37,7 @@
       shxh = "sudoedit /etc/nixos/hosts/bree/home.nix";
 
       cdb = "cd /etc/nixos/hosts/bree";
+      cdc = "cd ~/.config/claude-code";
       cde = "cd /etc/nixos";
       cdh = "cd /etc/nixos/home";
       cdph = "cd /etc/nixos/home/programs";

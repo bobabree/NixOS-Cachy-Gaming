@@ -115,7 +115,7 @@
       # Focus window under mouse without clicking
       # max-scroll-amount = "0%" means only focus if no scrolling needed
       focus-follows-mouse.enable = true;
-      focus-follows-mouse.max-scroll-amount = "0%";
+      # focus-follows-mouse.max-scroll-amount = "0%";
 
       # workspace-auto-back-and-forth = true; # Press workspace key twice = go to previous workspace
       # workspace-auto-back-and-forth = false; # Useful for toggling between 2 workspaces

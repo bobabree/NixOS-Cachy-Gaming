@@ -2,10 +2,11 @@
 {...}: {
   # Import all system modules for this host
   imports = [
-    ./boot.nix
-    ./networking.nix
     ./audio.nix
+    ./boot.nix
     ./graphics.nix
+    ./localization.nix
+    ./networking.nix
 
     ./programs # Automatically finds programs/default.nix
   ];
