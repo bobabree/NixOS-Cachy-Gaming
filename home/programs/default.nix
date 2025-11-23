@@ -1,7 +1,6 @@
 # home/programs/default.nix
 {
   config,
-  lib,
   pkgs,
   ...
 }: {
@@ -12,6 +11,7 @@
     ./firefox.nix # Browser config
     ./fish.nix # Shell config
     ./git.nix # Version control config
+    ./stylix.nix # System/CLI/Program theming for ones Noctalia cannot handle
     ./niri # Window manager for Wayland (finds ./niri/default.nix automatically)
     ./noctalia # Desktop shell for Wayland
   ];
@@ -50,101 +50,13 @@
     xwayland-satellite
 
     # Noctalia
-    gpu-screen-recorder # Screen recording functionality
-    # ddcutil # Desktop monitor brightness control (⚠️ may introduce system instability with certain monitors)
-    cliphist # Clipboard history support
-    matugen # Material You color scheme generation
-    cava # Audio visualizer component
-    wlsunset # Night light functionality
-    xdg-desktop-portal # Enables “Portal” option in screen recorder
-    python3 # Calendar events
-    evolution-data-server # Calendar events
-    adw-gtk3 # GTK theme base
-    qt6Packages.qt6ct # Qt configuration tool
     pywalfox-native # Enable firefox theming
   ];
 
-  # Force overwrite all conflicts - no backups
-  home.activation.forceOverwrite = lib.hm.dag.entryBefore ["writeBoundary"] ''
-    $DRY_RUN_CMD rm -rf $HOME/.local/state/home-manager
-  '';
-
   # Create symlink for pywalfox
-  home.file.".cache/wal/colors.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/noctalia/colors.json";
-
-  #===================================================================
-  # GTK THEMING
-  # Base theme that Noctalia will customize with generated colors
-  #===================================================================
-  gtk = {
-    enable = true;
-
-    # Base GTK theme - Noctalia will inject colors via CSS
-    theme = {
-      name = "adw-gtk3";
-      package = pkgs.adw-gtk3;
-    };
-
-    # Icon theme
-    # This won't change with Noctalia's colors
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-
-    # Cursor theme - matches Niri
-    cursorTheme = {
-      name = "BreezeX-RosePineDawn-Linux";
-      package = pkgs.rose-pine-cursor;
-      size = 36;
-    };
-
-    # Font for GTK applications
-    font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 11;
-    };
-  };
-
-  #===================================================================
-  # DCONF SETTINGS
-  # Controls GTK4/libadwaita app behavior and color scheme
-  #===================================================================
-  dconf = {
-    enable = true;
-    settings."org/gnome/desktop/interface" = {
-      # "default" = follow Noctalia's dark/light mode switching
-      color-scheme = "default";
-
-      # Font rendering (optional but improves appearance)
-      font-antialiasing = "rgba";
-      font-hinting = "slight";
-    };
-  };
-
-  #===================================================================
-  # QT THEMING
-  # Themes Qt applications using qt6ct
-  #===================================================================
-  qt = {
-    enable = true;
-    platformTheme.name = "qtct";
-  };
-
-  #===================================================================
-  # DEFAULT APPLICATIONS
-  # Set which apps open which file types
-  #===================================================================
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      # Web browser defaults
-      "text/html" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/about" = "firefox.desktop";
-      "x-scheme-handler/unknown" = "firefox.desktop";
-    };
+  home.file.".cache/wal/colors.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/noctalia/colors.json";
+    force = true;
   };
 
   #===================================================================

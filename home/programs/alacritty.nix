@@ -3,6 +3,9 @@
 # TERMINAL EMULATORS
 #===================================================================
 {...}: {
+  # Force overwrite
+  xdg.configFile."alacritty/alacritty.toml".force = true;
+
   programs.alacritty = {
     enable = true;
 

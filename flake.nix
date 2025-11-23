@@ -6,6 +6,7 @@
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     niri.url = "github:sodiboo/niri-flake";
     nur.url = "github:nix-community/NUR";
+    stylix.url = "github:nix-community/stylix";
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,6 +24,7 @@
     niri,
     noctalia,
     nur,
+    stylix,
     home-manager,
     ...
   } @ inputs: {
@@ -52,6 +54,9 @@
             nixpkgs.overlays = [nur.overlays.default];
           }
 
+          # Strategy: Stylix themes system/CLI
+          stylix.nixosModules.stylix
+
           # =====================================================
           # HOME MANAGER (USER CONFIGURATION)
           # =====================================================
@@ -62,6 +67,9 @@
 
             # Install packages to /etc/profiles instead of ~/.nix-profile
             home-manager.useUserPackages = true;
+
+            # Backup conflicting files
+            home-manager.backupFileExtension = "backup";
 
             # Pass to home manager too
             home-manager.extraSpecialArgs = {inherit inputs;};
