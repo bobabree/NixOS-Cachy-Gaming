@@ -13,6 +13,7 @@
     ./fish.nix # Shell config
     ./git.nix # Version control config
     ./stylix.nix # System/CLI/Program theming for ones Noctalia cannot handle
+    ./tmux.nix # Terminal multiplexer
     ./vesktop.nix # Discord
     ./niri # Window manager for Wayland (finds ./niri/default.nix automatically)
     ./noctalia # Desktop shell for Wayland
