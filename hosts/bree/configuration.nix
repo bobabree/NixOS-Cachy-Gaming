@@ -50,6 +50,8 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
+    # Suppress the warning (doesn't actually do anything since we use environment.etc)
+    config.common.default = "*";
     extraPortals = with pkgs; [
       xdg-desktop-portal
       xdg-desktop-portal-gtk
@@ -96,6 +98,12 @@
       TTYVHangup = true;
       TTYVTDisallocate = true;
     };
+
+    # Create user-writable wallpaper directory for Wallhaven downloads
+    tmpfiles.rules = [
+      "d /home/bree/Pictures 0755 bree users -"
+      "d /home/bree/Pictures/Wallpapers 0755 bree users -"
+    ];
   };
 
   # Enable dconf (required for GTK settings)

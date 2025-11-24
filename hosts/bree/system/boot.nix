@@ -36,6 +36,11 @@
       "loglevel=3" # Hide most messages
       "rd.systemd.show_status=false" # Hide systemd status
       "rd.udev.log_level=3" # Quiet udev
+
+      # ACPI workarounds (test one at a time)
+      "pnpacpi=off" # Workaround for ACPI USB errors. May break auto-detection of legacy devices.
+      # "acpi_osi=Linux" # Make BIOS think we're Linux. May change power/thermal behavior.
+      # "acpi_osi=!" # Disable all ACPI OS interfaces. May break vendor-specific features.
     ];
 
     kernelModules = ["v4l2loopback" "i2c-dev"]; # Webcam + monitor control
@@ -43,9 +48,18 @@
       options v4l2loopback video_nr=0 card_label="DroidCam" exclusive_caps=1
     '';
 
+    # Module blacklist
+    blacklistedKernelModules = [
+      "intel_ish_ipc" # Disable auto-brightness to suppress ISH firmware errors
+    ];
+
     # Plymouth boot splash screen (themed by Stylix)
     plymouth.enable = true;
   };
+
+  # Disable slow services
+  systemd.services."systemd-backlight@leds:asus::kbd_backlight".enable =
+    false; # Disable keyboard backlight restoration. Takes too long to load.
 
   # SCX schedulers (CachyOS feature)
   services.scx.enable = true;

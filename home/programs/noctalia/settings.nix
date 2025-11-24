@@ -61,7 +61,7 @@
 
       general = {
         # User profile
-        avatarImage = "/etc/nixos/hosts/bree/assets/avatar.jpg"; # Path to avatar image for lock screen
+        avatarImage = "/etc/nixos/hosts/bree/assets/Avatars/avatar.jpg"; # Path to avatar image for lock screen
 
         # Visual settings
         scaleRatio = 1; # Global UI scale: 0.8-1.2 (80%-120%)
@@ -159,19 +159,19 @@
         overviewEnabled = true; # Blurred wallpaper in overview/workspace switcher
 
         # Directories
-        directory = "/etc/nixos/hosts/bree/assets"; # Wallpaper folder
+        directory = "~/Pictures/Wallpapers"; # Wallpaper folder
         enableMultiMonitorDirectories = false; # Per-monitor wallpaper folders
         recursiveSearch = false; # Search subdirectories
 
         # Display
         setWallpaperOnAllMonitors = true; # Same wallpaper on all monitors
-        defaultWallpaper = "/etc/nixos/hosts/bree/assets/1.jpg"; # Default image
+        defaultWallpaper = "/etc/nixos/hosts/bree/assets/Wallpapers/1.jpg"; # Default image
         fillMode = "crop"; # "crop" | "fill" | "fit" | "stretch" | "tile" | "center"
         fillColor = "#000000"; # Background color for non-filled areas
 
         # Slideshow
-        randomEnabled = false; # Auto-change wallpaper
-        randomIntervalSec = 300; # Change interval (seconds)
+        randomEnabled = true; # Auto-change wallpaper
+        randomIntervalSec = 120; # Change interval (seconds)
 
         # Transitions
         transitionDuration = 1500; # Transition duration (ms)
@@ -184,16 +184,16 @@
         monitors = []; # Per-monitor wallpapers (advanced)
 
         # Wallhaven integration
-        useWallhaven = false; # Enable Wallhaven API
-        wallHavenApiKey = "paste-your-32-character-key-here";
+        useWallhaven = true; # Enable Wallhaven API
+        wallHavenApiKey = "wsvo1KnIb12rJHKpmCRtTcWYrLgA9Zao";
         wallhavenQuery = "makima"; # Search query
-        wallhavenSorting = "relevance"; # "relevance" | "random" | "date_added" | "views" | "favorites"
+        wallhavenSorting = "favorites"; # "relevance" | "random" | "date_added" | "views" | "favorites"
         wallhavenOrder = "desc"; # "desc" | "asc"
         wallhavenCategories = "111"; # "general,anime,people" (1=enabled, 0=disabled)
         wallhavenPurity = "100"; # "sfw,sketchy,nsfw" (1=enabled, 0=disabled)
         wallhavenResolutionMode = "atleast"; # "atleast" | "exactly"
-        wallhavenResolutionWidth = ""; # Minimum/exact width
-        wallhavenResolutionHeight = ""; # Minimum/exact height
+        wallhavenResolutionWidth = "1440"; # Minimum/exact width
+        wallhavenResolutionHeight = "900"; # Minimum/exact height
       };
 
       # ═══════════════════════════════════════════════════════════
