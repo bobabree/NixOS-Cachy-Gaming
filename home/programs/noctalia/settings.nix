@@ -170,7 +170,7 @@
         fillColor = "#000000"; # Background color for non-filled areas
 
         # Slideshow
-        randomEnabled = true; # Auto-change wallpaper
+        randomEnabled = false; # Auto-change wallpaper
         randomIntervalSec = 120; # Change interval (seconds)
 
         # Transitions

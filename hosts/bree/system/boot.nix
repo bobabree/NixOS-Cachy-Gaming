@@ -33,12 +33,12 @@
       # "video=eDP-1:2880x1800@120" # Force monitor resolution/refresh
       "quiet" # Reduce boot messages for cleaner Plymouth display
       "splash" # Enable Plymouth boot splash
-      "loglevel=3" # Hide most messages
+      "loglevel=1" # Hide most messages
       "rd.systemd.show_status=false" # Hide systemd status
       "rd.udev.log_level=3" # Quiet udev
 
       # ACPI workarounds (test one at a time)
-      "pnpacpi=off" # Workaround for ACPI USB errors. May break auto-detection of legacy devices.
+      # "pnpacpi=off" # Workaround for ACPI USB errors. May break auto-detection of legacy devices.
       # "acpi_osi=Linux" # Make BIOS think we're Linux. May change power/thermal behavior.
       # "acpi_osi=!" # Disable all ACPI OS interfaces. May break vendor-specific features.
     ];

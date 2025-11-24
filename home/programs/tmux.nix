@@ -14,6 +14,12 @@
     keyMode = "vi";
     clock24 = true;
 
+    # Session persistence
+    plugins = with pkgs.tmuxPlugins; [
+      resurrect # Save/restore sessions
+      continuum # Auto-save
+    ];
+
     # Fix focus events for Helix auto-reload
     extraConfig = ''
             # True color support for Helix
@@ -50,6 +56,12 @@
             # Reload config with r
             bind r source-file ~/.config/tmux/tmux.conf \; display "Config
       reloaded!"
+
+            # tmux-continuum: auto-restore on tmux start
+            set -g @continuum-restore 'on'
+
+            # tmux-continuum: auto-save interval (minutes)
+            set -g @continuum-save-interval '1'
     '';
   };
 }

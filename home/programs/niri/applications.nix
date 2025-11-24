@@ -1,9 +1,11 @@
 # home/programs/niri/applications.nix
-# ─── Applications ───
-{pkgs}: let
+{
+  pkgs,
+  config,
+}: let
   niri = "${pkgs.niri}/bin/niri";
+  noctalia = "${config.programs.noctalia-shell.package}/bin/noctalia-shell";
 in {
-  terminal = "${pkgs.alacritty}/bin/alacritty"; # Mod+t
   aiTerminal = [
     "${pkgs.alacritty}/bin/alacritty"
     "--working-directory"
@@ -11,17 +13,19 @@ in {
     "-e"
     "claude"
     "--resume"
-  ]; # Mod+Shift+t
-  appLauncher = ["noctalia-shell" "ipc" "call" "launcher" "toggle"]; # Mod+a
-  browser = "${pkgs.firefox}/bin/firefox"; # Mod+b
-  fileManager = "${pkgs.nautilus}/bin/nautilus"; # Mod+Return
-  fileManagerTerminal = ["${pkgs.alacritty}/bin/alacritty" "-e" "yazi"]; # Mod+Shift+Return
-  lockScreen = ["noctalia-shell" "ipc" "call" "lockScreen" "lock"]; # Mod+l
-  nightShift = ["noctalia-shell" "ipc" "call" "darkMode" "toggle"]; # Mod+n
-  sessionScreen = ["noctalia-shell" "ipc" "call" "sessionMenu" "toggle"]; # Mod+Shift+l
-  systemMonitor = ["${pkgs.alacritty}/bin/alacritty" "-e" "btop"]; # Mod+m
-  vesktop = "${pkgs.vesktop}/bin/vesktop"; # Discord client
-
-  # Screenshot commands using niri's built-in IPC
+  ];
+  appLauncher = [noctalia "ipc" "call" "launcher" "toggle"];
+  browser = "${pkgs.firefox}/bin/firefox";
+  chat = "${pkgs.vesktop}/bin/vesktop";
+  fileManager = "${pkgs.nautilus}/bin/nautilus";
+  fileManagerTerminal = ["${pkgs.alacritty}/bin/alacritty" "-e" "yazi"];
+  lockScreen = [noctalia "ipc" "call" "lockScreen" "lock"];
+  nightShift = [noctalia "ipc" "call" "darkMode" "toggle"];
+  noctaliaStart = [noctalia];
+  # noctaliaStart = ["sh" "-c" "${noctalia} & sleep 3 && ${noctalia} ipc call lockScreen lock"];
+  # noctaliaStart = ["sh" "-c" "${noctalia} & for i in {1..50}; do result=$(${noctalia} ipc call lockScreen lock 2>&1); if ! echo \"$result\" | grep -q 'No running instances\\|Target not found'; then exit 0; fi; sleep 0.2; done"];
   screenshot = [niri "msg" "action" "screenshot"];
+  sessionScreen = [noctalia "ipc" "call" "sessionMenu" "toggle"];
+  systemMonitor = ["${pkgs.alacritty}/bin/alacritty" "-e" "btop"];
+  terminal = "${pkgs.alacritty}/bin/alacritty";
 }

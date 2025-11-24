@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  apps = import ./applications.nix {inherit pkgs;};
+  apps = import ./applications.nix {inherit config pkgs;};
 in {
   programs.niri.settings.binds = with config.lib.niri.actions; let
     sh = spawn "sh" ["-c"];
