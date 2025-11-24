@@ -27,12 +27,28 @@
         opacity = 0.95;
       }
 
-      # Vesktop
+      # Browser
+      # {
+      #   matches = [
+      #     {app-id = "firefox";}
+      #     {
+      #       app-id = "firefox$";
+      #       title = "^Picture-in-Picture$";
+      #     }
+      #   ];
+      #   open-on-workspace = "browser";
+      # }
+
+      # Chat
       {
         matches = [
           {app-id = "vesktop";}
+          {
+            app-id = "vesktop$";
+            title = "^General$";
+          }
         ];
-        open-on-workspace = "vesktop";
+        open-on-workspace = "chat";
       }
 
       # Floating windows

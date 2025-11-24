@@ -10,7 +10,7 @@
 
       workspaces = {
         "browser" = {};
-        "vesktop" = {};
+        "chat" = {};
       };
 
       # Disable program decorations
@@ -30,7 +30,7 @@
         hide-when-typing = false;
         # hide-after-inactive-ms = 1000;
         size = 36;
-        theme = "BreezeX-RosePineDawn-Linux";
+        theme = "BreezeX-RosePine-Linux";
       };
 
       hotkey-overlay = {

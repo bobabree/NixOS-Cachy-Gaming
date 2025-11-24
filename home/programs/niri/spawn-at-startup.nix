@@ -11,9 +11,8 @@ in {
   programs.niri.settings = {
     # Spawn processes/shell commands at niri startup
     spawn-at-startup = [
-      {command = apps.noctaliaStart;}
+      {command = apps.desktopShell;}
 
-      # {command = apps.lockScreenDelayed;}
       # Apps
       {command = [apps.terminal];}
       {command = apps.aiTerminal;}
@@ -22,7 +21,7 @@ in {
       {command = ["xwayland-satellite"];}
 
       # Pywalfox (using sh for &&)
-      {command = ["sh" "-c" "pywalfox install && pywalfox update"];}
+      {command = ["sh" "-c" "pywalfox install"];}
     ];
   };
 }

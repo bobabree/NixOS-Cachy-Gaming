@@ -89,14 +89,16 @@
     # To prevent getting stuck at shutdown
     settings.Manager.DefaultTimeoutStopSec = "10s";
 
-    services.greetd.serviceConfig = {
-      Type = "idle";
-      StandardInput = "tty";
-      StandardOutput = "tty";
-      StandardError = "journal";
-      TTYReset = true;
-      TTYVHangup = true;
-      TTYVTDisallocate = true;
+    services = {
+      greetd.serviceConfig = {
+        Type = "idle";
+        StandardInput = "tty";
+        StandardOutput = "tty";
+        StandardError = "journal";
+        TTYReset = true;
+        TTYVHangup = true;
+        TTYVTDisallocate = true;
+      };
     };
 
     # Create user-writable wallpaper directory for Wallhaven downloads

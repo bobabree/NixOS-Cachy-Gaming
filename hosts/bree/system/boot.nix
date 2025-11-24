@@ -30,18 +30,38 @@
     };
 
     kernelParams = [
-      # "video=eDP-1:2880x1800@120" # Force monitor resolution/refresh
-      "quiet" # Reduce boot messages for cleaner Plymouth display
-      "splash" # Enable Plymouth boot splash
-      "loglevel=1" # Hide most messages
-      "rd.systemd.show_status=false" # Hide systemd status
-      "rd.udev.log_level=3" # Quiet udev
+      # Basic silent boot
+      "quiet" # Suppress most kernel messages
+      "splash" # Enable Plymouth boot splash screen
 
+      # Kernel logging levels (0=emergency, 3=error, 7=debug)
+      "loglevel=0" # Show only errors and above (was 1 which shows almost nothing)
+
+      # Systemd status messages
+      "systemd.show_status=auto" # Hide successful messages, show failures  (replaces rd.systemd.show_status=false)
+      "rd.systemd.show_status=auto" # Same as above but for initramfs (early boot stage)
+
+      # Udev logging (device manager)
+      "udev.log_level=0" # Reduce udev noise during regular boot
+      "rd.udev.log_level=0" # Reduce udev noise in initramfs
+
+      # Console cursor
+      "vt.global_cursor_default=0" # Hide blinking cursor during boot/shutdown
+
+      "console=tty2" # Redirect messages to tty2 (hidden)
+      "plymouth.ignore-serial-consoles" # Hide serial console messages
+      "i915.fastboot=1" # Fast boot for Intel GPU (if applicable)
       # ACPI workarounds (test one at a time)
       # "pnpacpi=off" # Workaround for ACPI USB errors. May break auto-detection of legacy devices.
       # "acpi_osi=Linux" # Make BIOS think we're Linux. May change power/thermal behavior.
       # "acpi_osi=!" # Disable all ACPI OS interfaces. May break vendor-specific features.
     ];
+
+    # Suppress kernel messages from being printed to console
+    # Format: current default minimum boot-time-default
+    kernel.sysctl = {
+      "kernel.printk" = "0 0 0 0";
+    };
 
     kernelModules = ["v4l2loopback" "i2c-dev"]; # Webcam + monitor control
     extraModprobeConfig = ''
@@ -55,6 +75,8 @@
 
     # Plymouth boot splash screen (themed by Stylix)
     plymouth.enable = true;
+    # initramfs runs before Plymouth fully takes over
+    initrd.verbose = false; # Hide initramfs messages
   };
 
   # Disable slow services
