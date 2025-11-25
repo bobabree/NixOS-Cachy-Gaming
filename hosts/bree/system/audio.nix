@@ -4,82 +4,106 @@
   # AUDIO
   #===================================================================
 
-  # Use PipeWire (modern audio system)
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
 
-    # Laptop speaker enhancement - EQ filter chain
     extraConfig.pipewire."92-laptop-speaker-eq" = {
       "context.modules" = [
         {
           name = "libpipewire-module-filter-chain";
           args = {
             "node.description" = "Laptop Speaker Enhancement";
-            "media.name" = "Laptop Speaker EQ";
+            "media.name" = "Optimized Speaker EQ";
             "filter.graph" = {
               nodes = [
-                # PRE-AMP to prevent clipping
                 {
                   type = "builtin";
-                  name = "preamp";
-                  label = "bq_highshelf";
+                  name = "hpf";
+                  label = "bq_highpass";
                   control = {
-                    "Freq" = 0.0; # 0Hz = pre-amp
-                    "Q" = 1.0;
-                    "Gain" = -6.0; # -6dB to compensate for EQ boosts
+                    "Freq" = 130.0;
+                    "Q" = 0.707;
                   };
                 }
-                # Bass boost
                 {
                   type = "builtin";
-                  name = "bass_boost";
-                  label = "bq_lowshelf";
-                  control = {
-                    "Freq" = 100.0; # 100Hz
-                    "Q" = 0.7; # Standard Q for shelf filters
-                    "Gain" = 4.0; # +4dB
-                  };
-                }
-                # Mid-range clarity - vocal frequencies
-                {
-                  type = "builtin";
-                  name = "mid_boost";
-                  label = "bq_peaking";
-                  control = {
-                    "Freq" = 2000.0; # 2kHz (vocal range)
-                    "Q" = 1.0;
-                    "Gain" = 2.0; # +2dB mid boost
-                  };
-                }
-                # Treble boost
-                {
-                  type = "builtin";
-                  name = "treble_boost";
-                  label = "bq_highshelf";
-                  control = {
-                    "Freq" = 10000.0;
-                    "Q" = 0.7;
-                    "Gain" = 3.0; # +3dB
+                  name = "eq";
+                  label = "param_eq";
+                  config = {
+                    filters = [
+                      # Pre-amp: headroom for EQ boosts
+                      {
+                        type = "bq_highshelf";
+                        freq = 0.0;
+                        q = 1.0;
+                        gain =
+                          -4.0;
+                      }
+                      # Bass boost: Fletcher-Munson compensation
+                      {
+                        type = "bq_lowshelf";
+                        freq = 150.0;
+                        q = 0.7;
+                        gain =
+                          6.0;
+                      }
+                      # Lower midrange: body and warmth
+                      {
+                        type = "bq_peaking";
+                        freq = 400.0;
+                        q = 1.0;
+                        gain =
+                          2.0;
+                      }
+                      # Upper midrange: attack and punch (critical for small speakers)
+                      {
+                        type = "bq_peaking";
+                        freq = 800.0;
+                        q = 1.0;
+                        gain =
+                          4.0;
+                      }
+                      # Presence: vocal clarity and intelligibility
+                      {
+                        type = "bq_peaking";
+                        freq = 3000.0;
+                        q = 1.0;
+                        gain =
+                          3.0;
+                      }
+                      # Treble: air and detail
+                      {
+                        type = "bq_highshelf";
+                        freq = 8000.0;
+                        q = 0.7;
+                        gain = 6.0;
+                      }
+                    ];
                   };
                 }
               ];
+              links = [
+                {
+                  output = "hpf:Out";
+                  input = "eq:In 1";
+                }
+              ];
+              inputs = ["hpf:In"];
+              outputs = ["eq:Out 1"];
             };
             "audio.channels" = 2;
             "audio.position" = ["FL" "FR"];
             "capture.props" = {
               "node.name" = "laptop_speaker_eq";
               "media.class" = "Audio/Sink";
-              "audio.channels" = 2;
-              "audio.position" = ["FL" "FR"];
             };
             "playback.props" = {
               "node.name" = "laptop_speaker_eq_playback";
-              "audio.channels" = 2;
-              "audio.position" = ["FL" "FR"];
               "node.passive" = true;
+              "node.target" = "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__Speaker__sink";
             };
           };
         }
