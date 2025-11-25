@@ -33,13 +33,15 @@
       # Basic silent boot
       "quiet" # Suppress most kernel messages
       "splash" # Enable Plymouth boot splash screen
+      "plymouth.nolog" # Tell Plymouth not to show logs
+      "plymouth.ignore-serial-consoles" # Hide serial console messages
 
       # Kernel logging levels (0=emergency, 3=error, 7=debug)
       "loglevel=0" # Show only errors and above (was 1 which shows almost nothing)
 
       # Systemd status messages
-      "systemd.show_status=auto" # Hide successful messages, show failures  (replaces rd.systemd.show_status=false)
-      "rd.systemd.show_status=auto" # Same as above but for initramfs (early boot stage)
+      "systemd.show_status=false" # Hide successful messages, show failures  (replaces rd.systemd.show_status=false)
+      "rd.systemd.show_status=false" # Same as above but for initramfs (early boot stage)
 
       # Udev logging (device manager)
       "udev.log_level=0" # Reduce udev noise during regular boot
@@ -49,12 +51,12 @@
       "vt.global_cursor_default=0" # Hide blinking cursor during boot/shutdown
 
       "console=tty2" # Redirect messages to tty2 (hidden)
-      "plymouth.ignore-serial-consoles" # Hide serial console messages
+      "pcie_aspm=force" # ASUS laptops need this
+      "pcie_aspm.policy=powersupersave" # 40% less power (test stability)
       "i915.fastboot=1" # Fast boot for Intel GPU (if applicable)
-      # ACPI workarounds (test one at a time)
-      # "pnpacpi=off" # Workaround for ACPI USB errors. May break auto-detection of legacy devices.
-      # "acpi_osi=Linux" # Make BIOS think we're Linux. May change power/thermal behavior.
-      # "acpi_osi=!" # Disable all ACPI OS interfaces. May break vendor-specific features.
+      "i915.enable_guc=3" # Intel Graphics GuC firmware loading + submission
+      "i915.enable_fbc=1" # Intel Framebuffer compression
+      "intel_idle.max_cstate=1" # Intel Lunar Lake stuttering fix
     ];
 
     # Suppress kernel messages from being printed to console
@@ -63,9 +65,18 @@
       "kernel.printk" = "0 0 0 0";
     };
 
-    kernelModules = ["v4l2loopback" "i2c-dev"]; # Webcam + monitor control
+    kernelModules = ["int340x_thermal_zone" "v4l2loopback" "i2c-dev"]; # Webcam + monitor control
     extraModprobeConfig = ''
+      # Webcam
       options v4l2loopback video_nr=0 card_label="DroidCam" exclusive_caps=1
+
+      # Audio power saving
+      options snd_hda_intel power_save=1
+      options snd_hda_intel power_save_controller=Y
+
+      # WiFi power saving (Intel)
+      options iwlwifi power_save=1
+      options iwlmvm power_scheme=3
     '';
 
     # Module blacklist

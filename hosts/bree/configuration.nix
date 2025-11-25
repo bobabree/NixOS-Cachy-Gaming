@@ -92,8 +92,8 @@
     services = {
       greetd.serviceConfig = {
         Type = "idle";
-        StandardInput = "tty";
-        StandardOutput = "tty";
+        StandardInput = "journal";
+        StandardOutput = "journal";
         StandardError = "journal";
         TTYReset = true;
         TTYVHangup = true;
