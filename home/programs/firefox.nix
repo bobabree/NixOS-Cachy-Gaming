@@ -1,14 +1,9 @@
-{pkgs, ...}: {
+{...}: {
   #===================================================================
   # BROWSERS
   #===================================================================
   programs.firefox = {
     enable = true;
-
-    # pywalfox-native for theme integration
-    nativeMessagingHosts = [
-      pkgs.pywalfox-native
-    ];
 
     # Power-efficient settings optimized for Intel Arc
     profiles.default = {
@@ -38,15 +33,6 @@
         # Battery optimization - reduce process count
         "dom.ipc.processCount" = 4;
       };
-
-      # Must manually enable when opening Firefox
-      # Then run pywalfox install or pywalfox update
-      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-        pywalfox
-      ];
     };
   };
-
-  # Tell Stylix which profile to theme
-  stylix.targets.firefox.profileNames = ["default"];
 }

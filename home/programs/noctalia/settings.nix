@@ -462,8 +462,8 @@
         kcolorscheme = false; # KDE color scheme
 
         # Applications
-        discord = true; # Discord/Vesktop theming
-        pywalfox = true; # Firefox via Pywalfox
+        discord = false; # Discord/Vesktop theming
+        pywalfox = false; # Firefox via Pywalfox
         code = false; # VS Code
         spicetify = false; # Spotify
         telegram = false; # Telegram

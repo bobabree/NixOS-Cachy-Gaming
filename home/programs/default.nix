@@ -1,9 +1,5 @@
 # home/programs/default.nix
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # Import all user program configurations
   imports = [
     ./alacritty.nix # Terminal emulator config
@@ -60,16 +56,7 @@
 
     # Niri
     xwayland-satellite
-
-    # Noctalia
-    pywalfox-native # Enable firefox theming
   ];
-
-  # Create symlink for pywalfox/stylix
-  home.file.".cache/wal/colors.json" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/noctalia/colors.json";
-    force = true;
-  };
 
   #===================================================================
   # SESSION VARIABLES

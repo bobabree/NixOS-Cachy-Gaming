@@ -253,7 +253,7 @@
         # Soft wrap settings
         soft-wrap = {
           # Enable soft wrapping
-          enable = false;
+          enable = true;
           # Max free space at line end
           max-wrap = 20;
           # Max indentation to carry over

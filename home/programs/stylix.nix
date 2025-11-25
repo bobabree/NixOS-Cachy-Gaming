@@ -10,7 +10,6 @@
     targets = {
       # Noctalia handles these
       alacritty.enable = true;
-      firefox.enable = false;
       gtk.enable = true;
       qt.enable = true;
 
@@ -22,6 +21,12 @@
       helix.enable = true;
       tmux.enable = true;
       yazi.enable = true;
+
+      firefox = {
+        enable = true;
+        profileNames = ["default"];
+        firefoxGnomeTheme.enable = true;
+      };
     };
 
     # Cursor

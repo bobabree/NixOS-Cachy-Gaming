@@ -57,6 +57,7 @@
       "i915.enable_guc=3" # Intel Graphics GuC firmware loading + submission
       "i915.enable_fbc=1" # Intel Framebuffer compression
       "intel_idle.max_cstate=1" # Intel Lunar Lake stuttering fix
+      "acpi_osi=Linux"
     ];
 
     # Suppress kernel messages from being printed to console

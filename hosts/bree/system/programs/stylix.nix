@@ -3,6 +3,9 @@
   stylix = {
     enable = true;
 
+    # Force dark mode on all applications
+    polarity = "dark";
+
     # Use Noctalia's colors via the symlink
     # Or set a static scheme
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
