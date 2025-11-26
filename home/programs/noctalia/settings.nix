@@ -429,7 +429,7 @@
       colorSchemes = {
         # Source
         useWallpaperColors = false; # Generate colors from wallpaper
-        predefinedScheme = "Rosepine"; # Predefined scheme name
+        predefinedScheme = "Everforest"; # Predefined scheme name
 
         # Mode
         darkMode = true; # Dark mode enabled
@@ -498,30 +498,7 @@
       hooks = {
         enabled = false; # Enable hook scripts
         wallpaperChange = ""; # Script to run on wallpaper change
-        darkModeChange = ''
-          #!/usr/bin/env fish
-
-          # Notify start
-          notify-send "Theme Switching" "Changing to $argv[1] mode..." -u low
-
-          if test "$argv[1]" = "dark"
-            set scheme "rose-pine"
-          else
-            set scheme "rose-pine-dawn"
-          end
-
-          # Update stylix
-          sed -i "s|base16-schemes}/share/themes/.*\\.yaml|base16-schemes}/share/themes/$scheme.yaml|" /etc/nixos/hosts/bree/system/programs/stylix.nix
-
-          # Notify rebuild starting
-          notify-send "Theme Switching" "Rebuilding system with $scheme..." -u low
-
-          # Rebuild (background so UI doesn't hang)
-          sudo nixos-rebuild switch --flake /etc/nixos#bree &
-
-          # Notify completion
-          notify-send "Theme Switched" "Now using $scheme theme" -u low
-        '';
+        darkModeChange = "";
       };
 
       # ═══════════════════════════════════════════════════════════

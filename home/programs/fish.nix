@@ -27,8 +27,7 @@
       # Git shortcuts
       gs = "git status";
       ga = "sh -c 'cd /etc/nixos && sudo git add *'";
-      gc = "sudo git commit -m";
-      gd = "sudo git rm -rf";
+      gc = "sh -c 'cd /etc/nixos && sudo git commit -m \"$1\"' --";
       gp = "git push origin master";
 
       # Editor

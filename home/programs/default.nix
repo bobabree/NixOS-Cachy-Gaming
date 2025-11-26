@@ -51,7 +51,7 @@
     gh # GitHub command-line tool
 
     # Cursor
-    rose-pine-cursor
+    everforest-cursors
 
     # Niri
     xwayland-satellite

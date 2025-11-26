@@ -30,7 +30,7 @@
         hide-when-typing = false;
         # hide-after-inactive-ms = 1000;
         size = 36;
-        theme = "BreezeX-RosePine-Linux";
+        theme = "everforest-cursors";
       };
 
       hotkey-overlay = {

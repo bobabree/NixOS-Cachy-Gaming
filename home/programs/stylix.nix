@@ -36,8 +36,8 @@
 
     # Cursor
     cursor = {
-      package = pkgs.rose-pine-cursor;
-      name = "BreezeX-RosePine-Linux";
+      package = pkgs.everforest-cursors;
+      name = "everforest-cursors";
       size = 36;
     };
 
