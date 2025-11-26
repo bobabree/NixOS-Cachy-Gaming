@@ -10,7 +10,7 @@
     ./git.nix # Version control config
     ./stylix.nix # System/CLI/Program theming for ones Noctalia cannot handle
     ./tmux.nix # Terminal multiplexer
-    ./vesktop.nix # Discord
+    ./nixcord.nix # Discord
     ./yazi.nix # Terminal file manager
     ./niri # Window manager for Wayland (finds ./niri/default.nix automatically)
     ./noctalia # Desktop shell for Wayland
@@ -24,7 +24,6 @@
     # Apps
     nautilus # Nautilus GUI file manager
     teams-for-linux # Microsoft Teams client
-    vesktop # Discord with better Linux support + Vencord
 
     # Fonts
     nerd-fonts.jetbrains-mono

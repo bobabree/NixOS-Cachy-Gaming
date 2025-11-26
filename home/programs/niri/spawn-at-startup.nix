@@ -19,9 +19,6 @@ in {
       {command = [apps.browser];}
       {command = [apps.chat];}
       {command = ["xwayland-satellite"];}
-
-      # Pywalfox (using sh for &&)
-      {command = ["sh" "-c" "pywalfox install"];}
     ];
   };
 }

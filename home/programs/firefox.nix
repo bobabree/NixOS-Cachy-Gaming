@@ -7,6 +7,10 @@
 
     # Power-efficient settings optimized for Intel Arc
     profiles.default = {
+      extensions = {
+        force = true;
+      };
+
       settings = {
         # Enable custom CSS
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;

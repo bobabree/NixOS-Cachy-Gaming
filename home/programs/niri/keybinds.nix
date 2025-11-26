@@ -72,11 +72,11 @@ in {
     # BRIGHTNESS CONTROLS
     # =====================================================
     "xf86monbrightnessup" = {
-      action = sh "brightnessctl set 10%+";
+      action = sh "brightnessctl set 1%+";
       allow-when-locked = true;
     };
     "xf86monbrightnessdown" = {
-      action = sh "brightnessctl set 10%-";
+      action = sh "brightnessctl set 1%-";
       allow-when-locked = true;
     };
 

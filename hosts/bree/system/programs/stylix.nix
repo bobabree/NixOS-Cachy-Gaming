@@ -8,7 +8,7 @@
 
     # Use Noctalia's colors via the symlink
     # Or set a static scheme
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
 
     # Enable automatic Home Manager integration
     homeManagerIntegration = {

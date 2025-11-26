@@ -25,7 +25,12 @@
       firefox = {
         enable = true;
         profileNames = ["default"];
-        firefoxGnomeTheme.enable = true;
+        firefoxGnomeTheme.enable = false;
+        colorTheme.enable = true;
+      };
+
+      nixcord = {
+        enable = true;
       };
     };
 

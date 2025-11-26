@@ -417,7 +417,7 @@
       # ═══════════════════════════════════════════════════════════
 
       brightness = {
-        brightnessStep = 1; # Brightness change increment (%)
+        brightnessStep = 5; # Brightness change increment (%)
         enforceMinimum = true; # Enforce minimum brightness
         enableDdcSupport = false; # Enable DDC/CI for external monitors (experimental)
       };
@@ -462,7 +462,7 @@
         kcolorscheme = false; # KDE color scheme
 
         # Applications
-        discord = false; # Discord/Vesktop theming
+        discord = false; # Discord theming
         pywalfox = false; # Firefox via Pywalfox
         code = false; # VS Code
         spicetify = false; # Spotify

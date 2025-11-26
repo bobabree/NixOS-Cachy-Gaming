@@ -7,6 +7,10 @@
     niri.url = "github:sodiboo/niri-flake";
     nur.url = "github:nix-community/NUR";
     stylix.url = "github:nix-community/stylix";
+    nixcord = {
+      url = "github:KaylorBen/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +26,7 @@
     nixpkgs,
     chaotic,
     niri,
+    nixcord,
     noctalia,
     nur,
     stylix,
@@ -84,6 +89,8 @@
                 # All managed via home/programs/default.nix
                 # This directory is PORTABLE across different machines
                 ./home/programs
+
+                nixcord.homeModules.nixcord # Discord
               ];
             };
           }
